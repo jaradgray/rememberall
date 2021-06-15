@@ -1,0 +1,19 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:Rememberall.res">
+    
+    <!-- Colors -->
+    <Color x:Key="darkest">#121212</Color>
+    <Color x:Key="white_87">#DDFFFFFF</Color>
+    <Color x:Key="white_60">#99FFFFFF</Color>
+    <Color x:Key="white_38">#60FFFFFF</Color>
+    
+    <!-- Brushes -->
+
+    <SolidColorBrush x:Key="window_background" Color="{StaticResource darkest}"/>
+    
+    <SolidColorBrush x:Key="foreground_highEmphasis" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
+    <SolidColorBrush x:Key="foreground_disabled" Color="{StaticResource white_38}"/>
+
+</ResourceDictionary>

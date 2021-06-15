@@ -8,12 +8,12 @@
         Title="Rememberall"
         Height="450"
         Width="800"
-        Background="#121212">
+        Background="{DynamicResource window_background}">
     <Window.Resources>
         <ResourceDictionary>
-            <Style TargetType="{x:Type ListView}">
-                <Setter Property="Background" Value="Transparent"/>
-            </Style>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/res/Colors.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
     
@@ -27,7 +27,8 @@
         <!-- Folders list -->
         <Grid
             Grid.Column="0">
-            <ListView/>
+            <ListView
+                Background="Transparent"/>
         </Grid>
 
         <!-- Items list -->
@@ -45,7 +46,8 @@
             <!-- TODO put a sort control here -->
 
             <ListView
-                Grid.Row="2"/>
+                Grid.Row="2"
+                Background="Transparent"/>
 
             <Button
                 Grid.Row="3">
