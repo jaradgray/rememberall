@@ -1,0 +1,59 @@
+﻿<Window x:Class="Rememberall.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rememberall"
+        mc:Ignorable="d"
+        Title="Rememberall"
+        Height="450"
+        Width="800"
+        Background="#121212">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style TargetType="{x:Type ListView}">
+                <Setter Property="Background" Value="Transparent"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        
+        <!-- Folders list -->
+        <Grid
+            Grid.Column="0">
+            <ListView/>
+        </Grid>
+
+        <!-- Items list -->
+        <Grid
+            Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="auto"/>
+            </Grid.RowDefinitions>
+            
+            <!-- TODO put a search box here -->
+            
+            <!-- TODO put a sort control here -->
+
+            <ListView
+                Grid.Row="2"/>
+
+            <Button
+                Grid.Row="3">
+                <!-- TODO use icon instead of text -->
+                Add
+            </Button>
+        </Grid>
+        
+        <!-- Item details -->
+    </Grid>
+</Window>
