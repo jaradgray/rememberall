@@ -31,7 +31,8 @@
             <ListView
                 x:Name="ListView_Folders"
                 Background="Transparent"
-                ItemTemplate="{StaticResource FolderItemTemplate}"/>
+                ItemTemplate="{StaticResource FolderItemTemplate}"
+                SelectedItem="{Binding SelectedFolder}"/>
         </Grid>
 
         <!-- Items list -->

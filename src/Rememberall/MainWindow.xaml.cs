@@ -37,16 +37,27 @@ namespace Rememberall
                     case nameof(MainWindowViewModel.AllFolders):
                         AllFolders_Change(m_ViewModel.AllFolders);
                         break;
+                    case nameof(MainWindowViewModel.SelectedFolder):
+                        SelectedFolder_Change(m_ViewModel.SelectedFolder);
+                        break;
                 }
             };
 
             // Initialize UI to ViewModel's data
             AllFolders_Change(m_ViewModel.AllFolders);
+            SelectedFolder_Change(m_ViewModel.SelectedFolder);
+
+            DataContext = m_ViewModel;
         }
 
         private void AllFolders_Change(List<Folder> allFolders)
         {
             ListView_Folders.ItemsSource = allFolders;
+        }
+
+        private void SelectedFolder_Change(Folder selectedFolder)
+        {
+            // TODO update LoginsList
         }
     }
 }
