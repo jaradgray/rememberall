@@ -4,6 +4,11 @@
              xmlns:local="clr-namespace:Rememberall"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- Include any resources we'll reference via App.Current.Resources -->
+                <ResourceDictionary Source="pack://application:,,,/res/Icons.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

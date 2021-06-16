@@ -13,6 +13,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/res/Colors.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/res/DataTemplates.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Window.Resources>
@@ -28,7 +29,9 @@
         <Grid
             Grid.Column="0">
             <ListView
-                Background="Transparent"/>
+                x:Name="ListView_Folders"
+                Background="Transparent"
+                ItemTemplate="{StaticResource FolderItemTemplate}"/>
         </Grid>
 
         <!-- Items list -->
@@ -47,7 +50,8 @@
 
             <ListView
                 Grid.Row="2"
-                Background="Transparent"/>
+                Background="Transparent">
+            </ListView>
 
             <Button
                 Grid.Row="3">
