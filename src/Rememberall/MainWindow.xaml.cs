@@ -26,13 +26,8 @@ namespace Rememberall
         {
             InitializeComponent();
 
-            // TODO do this properly
-            m_Folders = new List<Folder>();
-            m_Folders.Add(new Folder("Hello", Folder.Type.AllItems));
-            m_Folders.Add(new Folder("There", Folder.Type.Settings));
-            m_Folders.Add(new Folder("Folder 1", Folder.Type.Folder));
-            m_Folders.Add(new Folder("Folder 2", Folder.Type.Folder));
-            m_Folders.Add(new Folder("Folder 3", Folder.Type.Folder));
+            // TODO do this in the ViewModel
+            m_Folders = FolderRepository.GetAllFolders();
 
             ListView_Folders.ItemsSource = m_Folders;
         }
