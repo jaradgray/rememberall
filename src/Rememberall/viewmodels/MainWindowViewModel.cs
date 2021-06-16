@@ -29,6 +29,23 @@ namespace Rememberall
                 if (value == _selectedFolder) return;
                 _selectedFolder = value;
                 OnPropertyChanged();
+
+                // Update LoginsMatchingFilter
+                // TODO will also need to consider search text for filtering eventually
+                LoginsMatchingFilter = LoginRepository.GetLoginsInFolder(_selectedFolder);
+            }
+        }
+
+        // TODO should this be here or in a separate UserControl's ViewModel?
+        private List<Login> _loginsMatchingFilter;
+        public List<Login> LoginsMatchingFilter
+        {
+            get { return _loginsMatchingFilter; }
+            set
+            {
+                if (value == _loginsMatchingFilter) return;
+                _loginsMatchingFilter = value;
+                OnPropertyChanged();
             }
         }
 

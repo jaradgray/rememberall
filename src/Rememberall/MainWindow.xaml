@@ -51,7 +51,9 @@
 
             <ListView
                 Grid.Row="2"
-                Background="Transparent">
+                Background="Transparent"
+                ItemTemplate="{StaticResource LoginItemTemplate}"
+                ItemsSource="{Binding LoginsMatchingFilter}">
             </ListView>
 
             <Button

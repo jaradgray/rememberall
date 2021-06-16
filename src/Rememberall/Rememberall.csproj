@@ -57,7 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="BaseINPC.cs" />
     <Compile Include="models\Folder.cs" />
+    <Compile Include="models\Login.cs" />
     <Compile Include="repositories\FolderRepository.cs" />
+    <Compile Include="repositories\LoginRepository.cs" />
     <Compile Include="viewmodels\MainWindowViewModel.cs" />
     <Compile Include="views\ItemDetailsUserControl.xaml.cs">
       <DependentUpon>ItemDetailsUserControl.xaml</DependentUpon>

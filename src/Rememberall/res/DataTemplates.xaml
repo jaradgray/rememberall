@@ -36,4 +36,41 @@
         </Grid>
     </DataTemplate>
     
+
+    <!-- Login item -->
+    <DataTemplate
+        x:Key="LoginItemTemplate">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="8"/>
+                <ColumnDefinition Width="24"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="8"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="8"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="8"/>
+            </Grid.RowDefinitions>
+            
+            <!-- TODO add image for favicon -->
+
+            <TextBlock
+                Grid.Row="1"
+                Grid.Column="2"
+                Foreground="{StaticResource foreground_highEmphasis}"
+                FontSize="16"
+                Text="{Binding Title}"/>
+
+            <TextBlock
+                Grid.Row="2"
+                Grid.Column="2"
+                Foreground="{StaticResource foreground_mediumEmphasis}"
+                FontSize="12"
+                Text="{Binding Username}"/>
+        </Grid>
+    </DataTemplate>
+    
 </ResourceDictionary>
