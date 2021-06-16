@@ -55,8 +55,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BaseINPC.cs" />
     <Compile Include="models\Folder.cs" />
     <Compile Include="repositories\FolderRepository.cs" />
+    <Compile Include="viewmodels\MainWindowViewModel.cs" />
     <Compile Include="views\ItemDetailsUserControl.xaml.cs">
       <DependentUpon>ItemDetailsUserControl.xaml</DependentUpon>
     </Compile>

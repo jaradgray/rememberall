@@ -20,16 +20,33 @@ namespace Rememberall
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<Folder> m_Folders;
+        private MainWindowViewModel m_ViewModel;
 
         public MainWindow()
         {
             InitializeComponent();
 
-            // TODO do this in the ViewModel
-            m_Folders = FolderRepository.GetAllFolders();
+            // Get a ViewModel
+            m_ViewModel = new MainWindowViewModel();
 
-            ListView_Folders.ItemsSource = m_Folders;
+            // Handle changes to ViewModel's data
+            m_ViewModel.PropertyChanged += (sender, args) =>
+            {
+                switch (args.PropertyName)
+                {
+                    case nameof(MainWindowViewModel.AllFolders):
+                        AllFolders_Change(m_ViewModel.AllFolders);
+                        break;
+                }
+            };
+
+            // Initialize UI to ViewModel's data
+            AllFolders_Change(m_ViewModel.AllFolders);
+        }
+
+        private void AllFolders_Change(List<Folder> allFolders)
+        {
+            ListView_Folders.ItemsSource = allFolders;
         }
     }
 }
