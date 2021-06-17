@@ -60,9 +60,11 @@
     <Compile Include="models\Login.cs" />
     <Compile Include="repositories\FolderRepository.cs" />
     <Compile Include="repositories\LoginRepository.cs" />
+    <Compile Include="viewmodels\LoginDetailsViewModel.cs" />
     <Compile Include="viewmodels\MainWindowViewModel.cs" />
-    <Compile Include="views\ItemDetailsUserControl.xaml.cs">
-      <DependentUpon>ItemDetailsUserControl.xaml</DependentUpon>
+    <Compile Include="viewmodels\SettingsViewModel.cs" />
+    <Compile Include="views\LoginDetailsUserControl.xaml.cs">
+      <DependentUpon>LoginDetailsUserControl.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -88,7 +90,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="views\ItemDetailsUserControl.xaml">
+    <Page Include="res\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\LoginDetailsUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

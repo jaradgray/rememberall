@@ -1,6 +1,6 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                    xmlns:local="clr-namespace:Rememberall.res">
+                    xmlns:local="clr-namespace:Rememberall">
     
     <!-- Folder item -->
     <DataTemplate
@@ -73,4 +73,20 @@
         </Grid>
     </DataTemplate>
     
+    <!-- Login Details -->
+    <DataTemplate DataType="{x:Type local:LoginDetailsViewModel}">
+        <TextBlock
+            Foreground="White"
+            FontSize="24"
+            Text="TODO make DataTemplate wrap LoginDetailsUserControl"/>
+    </DataTemplate>
+
+    <!-- Settings -->
+    <DataTemplate DataType="{x:Type local:SettingsViewModel}">
+        <TextBlock
+            Foreground="White"
+            FontSize="24"
+            Text="TODO make DataTemplate wrap SettingsUserControl"/>
+    </DataTemplate>
+
 </ResourceDictionary>
