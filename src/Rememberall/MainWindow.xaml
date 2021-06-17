@@ -53,7 +53,8 @@
                 Grid.Row="2"
                 Background="Transparent"
                 ItemTemplate="{StaticResource LoginItemTemplate}"
-                ItemsSource="{Binding LoginsMatchingFilter}">
+                ItemsSource="{Binding LoginsMatchingFilter}"
+                SelectedItem="{Binding SelectedLogin}">
             </ListView>
 
             <Button
@@ -64,5 +65,9 @@
         </Grid>
         
         <!-- Item details -->
+        <ContentControl
+            Grid.Column="2"
+            Content="{Binding CurrentDetailsView}"/>
+
     </Grid>
 </Window>

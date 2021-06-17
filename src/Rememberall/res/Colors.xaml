@@ -4,6 +4,7 @@
     
     <!-- Colors -->
     <Color x:Key="darkest">#121212</Color>
+    <Color x:Key="black_30">#4C000000</Color>
     <Color x:Key="white_87">#DDFFFFFF</Color>
     <Color x:Key="white_60">#99FFFFFF</Color>
     <Color x:Key="white_38">#60FFFFFF</Color>
@@ -15,5 +16,7 @@
     <SolidColorBrush x:Key="foreground_highEmphasis" Color="{StaticResource white_87}"/>
     <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
     <SolidColorBrush x:Key="foreground_disabled" Color="{StaticResource white_38}"/>
+    
+    <SolidColorBrush x:Key="line_dark" Color="{StaticResource black_30}"/>
 
 </ResourceDictionary>

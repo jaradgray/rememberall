@@ -6,8 +6,12 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <!-- Include any resources we'll reference via App.Current.Resources -->
+                <!--
+                    Including resources here makes them available anywhere in the app
+                    as Static/Dynamic Resources, and via App.Current.Resources
+                -->
                 <ResourceDictionary Source="pack://application:,,,/res/Icons.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/res/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
