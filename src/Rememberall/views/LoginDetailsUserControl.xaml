@@ -118,7 +118,8 @@
             <Button
                 Grid.Column="1"
                 Grid.Row="3"
-                HorizontalAlignment="Left">
+                HorizontalAlignment="Left"
+                Command="{Binding DataContext.EditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                 <!-- TODO use icon instead of text -->
                 Edit
             </Button>

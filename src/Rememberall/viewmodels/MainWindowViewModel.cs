@@ -25,7 +25,21 @@ namespace Rememberall
                 return _addLoginCommand;
             }
         }
+
         private ICommand _editLoginCommand;
+        public ICommand EditLoginCommand
+        {
+            get
+            {
+                if (_editLoginCommand == null)
+                {
+                    _editLoginCommand = new RelayCommand(
+                        param => ShowEditLoginView(),
+                        param => true);
+                }
+                return _editLoginCommand;
+            }
+        }
 
         #endregion // Commands
 
@@ -125,7 +139,12 @@ namespace Rememberall
 
         private void ShowAddLoginView()
         {
-            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel");
+            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel to add a new Login");
+        }
+
+        private void ShowEditLoginView()
+        {
+            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel to edit current Login");
         }
 
         #endregion // Private methods
