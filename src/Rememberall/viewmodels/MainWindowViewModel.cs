@@ -9,6 +9,26 @@ namespace Rememberall
 {
     public class MainWindowViewModel : BaseINPC
     {
+        #region Commands
+
+        private ICommand _addLoginCommand;
+        public ICommand AddLoginCommand
+        {
+            get
+            {
+                if (_addLoginCommand == null)
+                {
+                    _addLoginCommand = new RelayCommand(
+                        param => ShowAddLoginView() /* execute */,
+                        param => SelectedFolder.FolderType != Folder.Type.Settings /* canExecute */);
+                }
+                return _addLoginCommand;
+            }
+        }
+        private ICommand _editLoginCommand;
+
+        #endregion // Commands
+
         #region Properties and backing fields
 
         private List<Folder> _allFolders;
@@ -99,5 +119,15 @@ namespace Rememberall
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders[0];
         }
+
+
+        #region Private methods
+
+        private void ShowAddLoginView()
+        {
+            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel");
+        }
+
+        #endregion // Private methods
     }
 }

@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseINPC.cs" />
+    <Compile Include="commands\RelayCommand.cs" />
     <Compile Include="models\Folder.cs" />
     <Compile Include="models\Login.cs" />
     <Compile Include="repositories\FolderRepository.cs" />
