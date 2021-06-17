@@ -67,6 +67,9 @@ namespace Rememberall
 
                 // Update CurrentDetailsView
                 CurrentDetailsView = (SelectedLogin == null) ? null : m_loginDetailsVM;
+
+                // Update m_loginDetailsVM's Login property
+                m_loginDetailsVM.Login = SelectedLogin;
             }
         }
 

@@ -1,9 +1,9 @@
-﻿<UserControl x:Class="Rememberall.views.ItemDetailsUserControl"
+﻿<UserControl x:Class="Rememberall.LoginDetailsUserControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Rememberall.views"
+             xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
              d:DesignWidth="450" d:DesignHeight="600"
              Foreground="{DynamicResource foreground_mediumEmphasis}">
@@ -60,12 +60,11 @@
                                     Text="Title"/>
                                 
                                 <TextBlock
-                                    x:Name="TextBlock_Title"
                                     Grid.Column="1"
                                     Grid.Row="2"
                                     Foreground="{StaticResource foreground_highEmphasis}"
                                     FontSize="16"
-                                    Text="TextBlock_Title"/>
+                                    Text="{Binding Login.Title}"/>
                             </Grid>
                         </Border>
 
@@ -93,12 +92,11 @@
                                     Text="Website"/>
 
                                 <TextBlock
-                                    x:Name="TextBlock_Website"
                                     Grid.Column="1"
                                     Grid.Row="2"
                                     Foreground="{StaticResource foreground_highEmphasis}"
                                     FontSize="16"
-                                    Text="TextBlock_Website"/>
+                                    Text="{Binding Login.Website}"/>
                                 
                                 <!-- TODO add navigate button -->
                                 

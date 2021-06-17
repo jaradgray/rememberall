@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace Rememberall
 {
     /// <summary>
-    /// Interaction logic for ItemDetailsUserControl.xaml
+    /// Interaction logic for SettingsUserControl.xaml
     /// </summary>
-    public partial class LoginDetailsUserControl : UserControl
+    public partial class SettingsUserControl : UserControl
     {
-        public LoginDetailsUserControl()
+        public SettingsUserControl()
         {
             InitializeComponent();
         }

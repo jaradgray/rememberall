@@ -75,18 +75,12 @@
     
     <!-- Login Details -->
     <DataTemplate DataType="{x:Type local:LoginDetailsViewModel}">
-        <TextBlock
-            Foreground="White"
-            FontSize="24"
-            Text="TODO make DataTemplate wrap LoginDetailsUserControl"/>
+        <local:LoginDetailsUserControl/>
     </DataTemplate>
 
     <!-- Settings -->
     <DataTemplate DataType="{x:Type local:SettingsViewModel}">
-        <TextBlock
-            Foreground="White"
-            FontSize="24"
-            Text="TODO make DataTemplate wrap SettingsUserControl"/>
+        <local:SettingsUserControl/>
     </DataTemplate>
 
 </ResourceDictionary>
