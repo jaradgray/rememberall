@@ -40,7 +40,7 @@
             <TextBlock
                 FontSize="16"
                 Text="Title"/>
-            <TextBlock
+            <TextBox
                 FontSize="16"
                 Margin="0 0 0 8"
                 FontWeight="Bold"
@@ -49,7 +49,7 @@
             <TextBlock
                 FontSize="16"
                 Text="Username"/>
-            <TextBlock
+            <TextBox
                 FontSize="16"
                 FontWeight="Bold"
                 Text="{Binding Login.Username}"/>

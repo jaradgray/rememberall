@@ -51,7 +51,7 @@ namespace Rememberall
         public AddEditLoginViewModel(Login login)
         {
             Heading = "Edit Login";
-            Login = login;
+            Login = new Login(login); // create a new Login based on given Login, so we can update its data but only persist it when user clicks Save
         }
     }
 }
