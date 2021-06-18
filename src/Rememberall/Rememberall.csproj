@@ -56,13 +56,18 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="BaseINPC.cs" />
+    <Compile Include="commands\RelayCommand.cs" />
     <Compile Include="models\Folder.cs" />
     <Compile Include="models\Login.cs" />
     <Compile Include="repositories\FolderRepository.cs" />
     <Compile Include="repositories\LoginRepository.cs" />
+    <Compile Include="viewmodels\AddEditLoginViewModel.cs" />
     <Compile Include="viewmodels\LoginDetailsViewModel.cs" />
     <Compile Include="viewmodels\MainWindowViewModel.cs" />
     <Compile Include="viewmodels\SettingsViewModel.cs" />
+    <Compile Include="views\AddEditLoginUserControl.xaml.cs">
+      <DependentUpon>AddEditLoginUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="views\LoginDetailsUserControl.xaml.cs">
       <DependentUpon>LoginDetailsUserControl.xaml</DependentUpon>
     </Compile>
@@ -94,6 +99,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="res\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\AddEditLoginUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

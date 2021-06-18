@@ -82,5 +82,10 @@
     <DataTemplate DataType="{x:Type local:SettingsViewModel}">
         <local:SettingsUserControl/>
     </DataTemplate>
+    
+    <!-- Add/Edit Login -->
+    <DataTemplate DataType="{x:Type local:AddEditLoginViewModel}">
+        <local:AddEditLoginUserControl/>
+    </DataTemplate>
 
 </ResourceDictionary>

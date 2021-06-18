@@ -58,7 +58,8 @@
             </ListView>
 
             <Button
-                Grid.Row="3">
+                Grid.Row="3"
+                Command="{Binding AddLoginCommand}">
                 <!-- TODO use icon instead of text -->
                 Add
             </Button>

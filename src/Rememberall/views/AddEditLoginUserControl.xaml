@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Rememberall.AddEditLoginUserControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Rememberall"
+             mc:Ignorable="d" 
+             d:DesignHeight="500"
+             d:DesignWidth="400">
+    
+    <!-- This is just a dummy layout to verify binding -->
+    <Grid
+        Background="LightCoral">
+        <StackPanel
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            
+            <TextBlock
+                FontSize="24"
+                HorizontalAlignment="Center"
+                Margin="0 0 0 16"
+                Text="Add/Edit Login UserControl"/>
+            
+            <TextBlock
+                FontSize="16"
+                Text="Title"/>
+            <TextBlock
+                FontSize="16"
+                Margin="0 0 0 8"
+                FontWeight="Bold"
+                Text="{Binding Login.Title}"/>
+
+            <TextBlock
+                FontSize="16"
+                Text="Username"/>
+            <TextBlock
+                FontSize="16"
+                FontWeight="Bold"
+                Text="{Binding Login.Username}"/>
+        </StackPanel>
+    </Grid>
+</UserControl>

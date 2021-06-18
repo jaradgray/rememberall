@@ -9,6 +9,40 @@ namespace Rememberall
 {
     public class MainWindowViewModel : BaseINPC
     {
+        #region Commands
+
+        private ICommand _addLoginCommand;
+        public ICommand AddLoginCommand
+        {
+            get
+            {
+                if (_addLoginCommand == null)
+                {
+                    _addLoginCommand = new RelayCommand(
+                        param => ShowAddLoginView() /* execute */,
+                        param => SelectedFolder.FolderType != Folder.Type.Settings /* canExecute */);
+                }
+                return _addLoginCommand;
+            }
+        }
+
+        private ICommand _editLoginCommand;
+        public ICommand EditLoginCommand
+        {
+            get
+            {
+                if (_editLoginCommand == null)
+                {
+                    _editLoginCommand = new RelayCommand(
+                        param => ShowEditLoginView(),
+                        param => true);
+                }
+                return _editLoginCommand;
+            }
+        }
+
+        #endregion // Commands
+
         #region Properties and backing fields
 
         private List<Folder> _allFolders;
@@ -91,6 +125,7 @@ namespace Rememberall
 
         private LoginDetailsViewModel m_loginDetailsVM = new LoginDetailsViewModel();
         private SettingsViewModel m_settingsVM = new SettingsViewModel();
+        private AddEditLoginViewModel m_addEditLoginVM;
 
         #endregion // Private members
 
@@ -99,5 +134,22 @@ namespace Rememberall
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders[0];
         }
+
+
+        #region Private methods
+
+        private void ShowAddLoginView()
+        {
+            m_addEditLoginVM = new AddEditLoginViewModel();
+            CurrentDetailsView = m_addEditLoginVM;
+        }
+
+        private void ShowEditLoginView()
+        {
+            m_addEditLoginVM = new AddEditLoginViewModel(SelectedLogin);
+            CurrentDetailsView = m_addEditLoginVM;
+        }
+
+        #endregion // Private methods
     }
 }
