@@ -8,6 +8,8 @@ namespace Rememberall
 {
     public static class LoginRepository
     {
+        private const string CONNECTION_STRING = @"Data Source=.\data\dummy.db;Version=3;"; // the connection string for the database we'll connect to
+
         /// <summary>
         /// Returns a List containing all Login objects in the database whose
         /// Folder property matches the given Folder, or all Logins if the
