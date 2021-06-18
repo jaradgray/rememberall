@@ -23,7 +23,7 @@ namespace Rememberall
         public Type FolderType { get; set; }
         public Path IconPath { get; }
 
-        public Folder(string name, Type type)
+        public Folder(string name, Type type = Type.Folder)
         {
             Name = name;
             FolderType = type;
