@@ -186,6 +186,7 @@ namespace Rememberall
         private void ShowAddLoginView()
         {
             m_addEditLoginVM = new AddEditLoginViewModel();
+            SelectedLogin = null;
             CurrentDetailsView = m_addEditLoginVM;
         }
 
