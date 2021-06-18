@@ -41,6 +41,51 @@ namespace Rememberall
             }
         }
 
+        private ICommand _saveLoginCommand;
+        public ICommand SaveLoginCommand
+        {
+            get
+            {
+                if (_saveLoginCommand == null)
+                {
+                    _saveLoginCommand = new RelayCommand(
+                        param => SaveLogin((Login)param),
+                        param => true);
+                }
+                return _saveLoginCommand;
+            }
+        }
+
+        private ICommand _deleteSelectedLoginCommand;
+        public ICommand DeleteSelectedLoginCommand
+        {
+            get
+            {
+                if (_deleteSelectedLoginCommand == null)
+                {
+                    _deleteSelectedLoginCommand = new RelayCommand(
+                        param => DeleteSelectedLogin(),
+                        param => SelectedLogin != null);
+                }
+                return _deleteSelectedLoginCommand;
+            }
+        }
+
+        private ICommand _cancelAddEditLoginCommand;
+        public ICommand CancelAddEditLoginCommand
+        {
+            get
+            {
+                if (_cancelAddEditLoginCommand == null)
+                {
+                    _cancelAddEditLoginCommand = new RelayCommand(
+                    param => CancelAddEditLogin(),
+                    param => true);
+                }
+                return _cancelAddEditLoginCommand;
+            }
+        }
+
         #endregion // Commands
 
         #region Properties and backing fields
@@ -148,6 +193,21 @@ namespace Rememberall
         {
             m_addEditLoginVM = new AddEditLoginViewModel(SelectedLogin);
             CurrentDetailsView = m_addEditLoginVM;
+        }
+
+        private void SaveLogin(Login login)
+        {
+            Console.WriteLine("TODO save login");
+        }
+
+        private void DeleteSelectedLogin()
+        {
+            Console.WriteLine("TODO delete selected login");
+        }
+
+        private void CancelAddEditLogin()
+        {
+            Console.WriteLine("TODO cancel add/edit login");
         }
 
         #endregion // Private methods

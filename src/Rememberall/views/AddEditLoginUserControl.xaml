@@ -8,10 +8,25 @@
              d:DesignHeight="500"
              d:DesignWidth="400">
     
-    <!-- This is just a dummy layout to verify binding -->
     <Grid
         Background="LightCoral">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- This is just a dummy layout to verify binding -->
         <StackPanel
+            Grid.Column="1"
+            Grid.Row="1"
             Orientation="Vertical"
             HorizontalAlignment="Center"
             VerticalAlignment="Center">
@@ -39,5 +54,32 @@
                 FontWeight="Bold"
                 Text="{Binding Login.Username}"/>
         </StackPanel>
+        
+        <!-- Bottom buttons -->
+        <Grid
+            Grid.Row="3"
+            Grid.ColumnSpan="3">
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Left">
+                <Button
+                    Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <!-- TODO set content to icon instead of text -->
+                    Save
+                </Button>
+                <Button
+                    Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <!-- TODO set content to icon instead of text -->
+                    Cancel
+                </Button>
+            </StackPanel>
+
+            <Button
+                HorizontalAlignment="Right"
+                Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                <!-- TODO set content to icon instead of text -->
+                Delete
+            </Button>
+        </Grid>
     </Grid>
 </UserControl>
