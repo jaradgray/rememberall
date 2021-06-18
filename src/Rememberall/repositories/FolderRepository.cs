@@ -11,6 +11,8 @@ namespace Rememberall
     /// </summary>
     public static class FolderRepository
     {
+        private const string CONNECTION_STRING = @"Data Source=.\data\dummy.db;Version=3;";
+
         /// <summary>
         /// Returns a List containing all Folders in the database, 
         /// including special Folders (AllFolders, Settings)
