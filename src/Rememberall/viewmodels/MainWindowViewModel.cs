@@ -125,6 +125,7 @@ namespace Rememberall
 
         private LoginDetailsViewModel m_loginDetailsVM = new LoginDetailsViewModel();
         private SettingsViewModel m_settingsVM = new SettingsViewModel();
+        private AddEditLoginViewModel m_addEditLoginVM;
 
         #endregion // Private members
 
@@ -139,12 +140,14 @@ namespace Rememberall
 
         private void ShowAddLoginView()
         {
-            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel to add a new Login");
+            m_addEditLoginVM = new AddEditLoginViewModel();
+            CurrentDetailsView = m_addEditLoginVM;
         }
 
         private void ShowEditLoginView()
         {
-            Console.WriteLine("TODO set CurrentDetailsView to an instance of AddEditLoginViewModel to edit current Login");
+            m_addEditLoginVM = new AddEditLoginViewModel(SelectedLogin);
+            CurrentDetailsView = m_addEditLoginVM;
         }
 
         #endregion // Private methods
