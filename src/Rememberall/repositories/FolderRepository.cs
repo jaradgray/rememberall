@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SQLite;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Dapper;
 
 namespace Rememberall
 {
@@ -22,15 +25,21 @@ namespace Rememberall
         {
             var result = new List<Folder>();
 
-            result.Add(new Folder("Hello", Folder.Type.AllItems));
-            result.Add(new Folder("There", Folder.Type.Settings));
+            result.Add(new Folder("All items", Folder.Type.AllItems));
+            result.Add(new Folder("Settings", Folder.Type.Settings));
 
-            // TODO populate result with actual Folders from the database
-            result.Add(new Folder("Folder 1", Folder.Type.Folder));
-            result.Add(new Folder("Folder 2", Folder.Type.Folder));
-            result.Add(new Folder("Folder 3", Folder.Type.Folder));
-
-            return result;
+            // Populate result with a Folder object for each unique FolderName in LoginTable
+            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                // TODO put in alphabetical order
+                string query = "SELECT DISTINCT FolderName FROM LoginTable";
+                var folderNames = connection.Query<string>(query, new DynamicParameters());
+                foreach(string name in folderNames)
+                {
+                    result.Add(new Folder(name));
+                }
+                return result;
+            }
         }
     }
 }
