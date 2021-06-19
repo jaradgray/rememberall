@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,7 +21,7 @@ namespace Rememberall
                 {
                     _addLoginCommand = new RelayCommand(
                         param => ShowAddLoginView() /* execute */,
-                        param => SelectedFolder.FolderType != Folder.Type.Settings /* canExecute */);
+                        param => SelectedFolder == null || SelectedFolder.FolderType != Folder.Type.Settings /* canExecute */);
                 }
                 return _addLoginCommand;
             }
@@ -112,6 +113,13 @@ namespace Rememberall
                 _selectedFolder = value;
                 OnPropertyChanged();
 
+                if (_selectedFolder == null)
+                {
+                    LoginsMatchingFilter = null;
+                    CurrentDetailsView = null;
+                    return;
+                }
+
                 // Update LoginsMatchingFilter
                 // TODO will also need to consider search text for filtering eventually
                 LoginsMatchingFilter = LoginRepository.GetLoginsInFolder(_selectedFolder);
@@ -122,8 +130,8 @@ namespace Rememberall
         }
 
         // TODO should this be here or in a separate UserControl's ViewModel?
-        private List<Login> _loginsMatchingFilter;
-        public List<Login> LoginsMatchingFilter
+        private ObservableCollection<Login> _loginsMatchingFilter;
+        public ObservableCollection<Login> LoginsMatchingFilter
         {
             get { return _loginsMatchingFilter; }
             set
@@ -174,11 +182,16 @@ namespace Rememberall
 
         #endregion // Private members
 
+
+        #region Constructor
+
         public MainWindowViewModel()
         {
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders[0];
         }
+
+        #endregion // Constructor
 
 
         #region Private methods
@@ -201,9 +214,24 @@ namespace Rememberall
             Console.WriteLine("TODO save login");
         }
 
+        /// <summary>
+        /// Deletes SelectedLogin from the database and refreshes UI to reflect the changes
+        /// </summary>
         private void DeleteSelectedLogin()
         {
-            Console.WriteLine("TODO delete selected login");
+            // Delete SelectedLogin from the database
+            LoginRepository.DeleteLogin(SelectedLogin);
+
+            // Refresh AllFolders from the database
+            string selectedFolderName = SelectedFolder.Name; // persist SelectedFolder's Name to use below
+            AllFolders = FolderRepository.GetAllFolders();
+
+            // Set SelectedFolder
+            //  - to deleted Login's Folder if it's in the list
+            //  - to the "All items" Folder if not
+            Folder folderToSelect = AllFolders.FirstOrDefault(folder => folder.Name.Equals(selectedFolderName));
+            if (folderToSelect == null) folderToSelect = AllFolders[0];
+            SelectedFolder = folderToSelect;
         }
 
         private void CancelAddEditLogin()
