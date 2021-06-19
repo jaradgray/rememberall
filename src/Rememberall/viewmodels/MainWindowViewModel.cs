@@ -208,7 +208,8 @@ namespace Rememberall
 
         private void CancelAddEditLogin()
         {
-            Console.WriteLine("TODO cancel add/edit login");
+            // Update CurrentDetailsView
+            CurrentDetailsView = (SelectedLogin == null) ? null : m_loginDetailsVM;
         }
 
         #endregion // Private methods
