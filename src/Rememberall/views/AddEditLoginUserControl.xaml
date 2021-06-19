@@ -63,7 +63,8 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Left">
                 <Button
-                    Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                    CommandParameter="{Binding Login}">
                     <!-- TODO set content to icon instead of text -->
                     Save
                 </Button>

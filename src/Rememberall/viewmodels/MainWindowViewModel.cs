@@ -209,9 +209,16 @@ namespace Rememberall
             CurrentDetailsView = m_addEditLoginVM;
         }
 
+        /// <summary>
+        /// Saves the given Login to the database and refreshes the UI to reflect the changes
+        /// </summary>
+        /// <param name="login"></param>
         private void SaveLogin(Login login)
         {
-            Console.WriteLine("TODO save login");
+            LoginRepository.SaveLogin(login);
+            AllFolders = FolderRepository.GetAllFolders();
+            SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
+            SelectedLogin = LoginsMatchingFilter.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
 
         /// <summary>

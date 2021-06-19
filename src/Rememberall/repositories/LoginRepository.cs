@@ -50,6 +50,12 @@ namespace Rememberall
             }
         }
 
+        public static void SaveLogin(Login login)
+        {
+            if (LoginExists(login)) UpdateLogin(login);
+            else InsertLogin(login);
+        }
+
         #endregion // Public methods
 
 
@@ -67,6 +73,44 @@ namespace Rememberall
                 var output = connection.Query<Login>(query, new DynamicParameters());
                 return new ObservableCollection<Login>(output);
             }
+        }
+
+        /// <summary>
+        /// Returns true if a record exists in the database's LoginTable whose TicksCreated
+        /// column matches the given Login's TicksCreated property, otherwise returns false
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        private static bool LoginExists(Login login)
+        {
+            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                string query = "SELECT * FROM LoginTable WHERE TicksCreated = " + login.TicksCreated;
+                var output = connection.Query<Login>(query, new DynamicParameters());
+                return output.Count() > 0;
+            }
+        }
+
+        /// <summary>
+        /// Inserts into the database's LoginTable a new record representing the given Login
+        /// </summary>
+        /// <param name="login"></param>
+        private static void InsertLogin(Login login)
+        {
+            // TODO validate Login at some point
+            login.FolderName = "Dummy folder";
+            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                string columnList = "(TicksCreated, TicksModified, FolderName, FaviconPath, Title, Website, Email, Username, Password, Note, IsFavorite)";
+                string valuesList = "(@TicksCreated, @TicksModified, @FolderName, @FaviconPath, @Title, @Website, @Email, @Username, @Password, @Note, @IsFavorite)";
+                string sql = "INSERT INTO LoginTable " + columnList + " VALUES " + valuesList;
+                connection.Execute(sql, login);
+            }
+        }
+
+        private static void UpdateLogin(Login login)
+        {
+
         }
 
         #endregion // Private methods
