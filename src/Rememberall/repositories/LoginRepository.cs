@@ -108,9 +108,28 @@ namespace Rememberall
             }
         }
 
+        /// <summary>
+        /// Updates the record representing the given Login in the database's LoginTable with the given Login's new property values
+        /// </summary>
+        /// <param name="login"></param>
         private static void UpdateLogin(Login login)
         {
-
+            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                string sql = "UPDATE LoginTable SET "
+                    + "TicksModified = @TicksModified"
+                    + ",FolderName = @FolderName"
+                    + ",FaviconPath = @FaviconPath"
+                    + ",Title = @Title"
+                    + ",Website = @Website"
+                    + ",Email = @Email"
+                    + ",Username = @Username"
+                    + ",Password = @Password"
+                    + ",Note = @Note"
+                    + ",IsFavorite = @IsFavorite"
+                    + " WHERE TicksCreated = @TicksCreated";
+                connection.Execute(sql, login);
+            }
         }
 
         #endregion // Private methods
