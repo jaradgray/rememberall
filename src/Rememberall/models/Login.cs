@@ -26,5 +26,24 @@ namespace Rememberall
             TicksCreated = DateTime.Now.Ticks;
             TicksModified = TicksCreated;
         }
+
+        /// <summary>
+        /// Creates a new Login whose properties match the given Login's properties.
+        /// </summary>
+        /// <param name="toCopy"></param>
+        public Login(Login toCopy)
+        {
+            TicksCreated = toCopy.TicksCreated;
+            TicksModified = toCopy.TicksModified;
+            FolderName = toCopy.FolderName;
+            FaviconPath = toCopy.FaviconPath;
+            Title = toCopy.Title;
+            Website = toCopy.Website;
+            Email = toCopy.Email;
+            Username = toCopy.Username;
+            Password = toCopy.Password;
+            Note = toCopy.Note;
+            IsFavorite = toCopy.IsFavorite;
+        }
     }
 }
