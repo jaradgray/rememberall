@@ -24,36 +24,116 @@
         </Grid.RowDefinitions>
 
         <!-- This is just a dummy layout to verify binding -->
-        <StackPanel
+        <ScrollViewer
             Grid.Column="1"
-            Grid.Row="1"
-            Orientation="Vertical"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            
-            <TextBlock
-                FontSize="24"
-                HorizontalAlignment="Center"
-                Margin="0 0 0 16"
-                Text="Add/Edit Login UserControl"/>
-            
-            <TextBlock
-                FontSize="16"
-                Text="Title"/>
-            <TextBox
-                FontSize="16"
-                Margin="0 0 0 8"
-                FontWeight="Bold"
-                Text="{Binding Login.Title}"/>
+            Grid.Row="1">
+            <StackPanel
+                Orientation="Vertical"
+                HorizontalAlignment="Center">
 
-            <TextBlock
-                FontSize="16"
-                Text="Username"/>
-            <TextBox
-                FontSize="16"
-                FontWeight="Bold"
-                Text="{Binding Login.Username}"/>
-        </StackPanel>
+                <TextBlock
+                    FontSize="24"
+                    HorizontalAlignment="Center"
+                    Margin="0 0 0 16"
+                    Text="Add/Edit Login UserControl"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Folder"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.FolderName}"/>
+
+                <CheckBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    IsChecked="{Binding Login.IsFavorite}">
+                    IsFavorite
+                </CheckBox>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="FaviconPath"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.FaviconPath}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Title"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Title}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Website"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Website}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Email"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Email}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Username"/>
+                <TextBox
+                    FontSize="16"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Username}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Password"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Password}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="Note"/>
+                <TextBox
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.Note}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="TicksCreated"/>
+                <TextBlock
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.TicksCreated}"/>
+
+                <TextBlock
+                    FontSize="16"
+                    Text="TicksModified"/>
+                <TextBlock
+                    FontSize="16"
+                    Margin="0 0 0 8"
+                    FontWeight="Bold"
+                    Text="{Binding Login.TicksModified}"/>
+            </StackPanel>
+        </ScrollViewer>
         
         <!-- Bottom buttons -->
         <Grid
