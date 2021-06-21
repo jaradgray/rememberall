@@ -115,14 +115,13 @@ namespace Rememberall
 
                 if (_selectedFolder == null)
                 {
-                    LoginsMatchingFilter = null;
+                    DisplayedLogins = null;
                     CurrentDetailsView = null;
                     return;
                 }
 
-                // Update LoginsMatchingFilter
-                // TODO will also need to consider search text for filtering eventually
-                LoginsMatchingFilter = LoginRepository.GetLoginsInFolder(_selectedFolder);
+                // Update DisplayedLogins
+                UpdateDisplayedLogins();
 
                 // Update CurrentDetailsView
                 CurrentDetailsView = (SelectedFolder.FolderType == Folder.Type.Settings) ? m_settingsVM : null;
@@ -130,14 +129,14 @@ namespace Rememberall
         }
 
         // TODO should this be here or in a separate UserControl's ViewModel?
-        private ObservableCollection<Login> _loginsMatchingFilter;
-        public ObservableCollection<Login> LoginsMatchingFilter
+        private ObservableCollection<Login> _displayedLogins;
+        public ObservableCollection<Login> DisplayedLogins
         {
-            get { return _loginsMatchingFilter; }
+            get { return _displayedLogins; }
             set
             {
-                if (value == _loginsMatchingFilter) return;
-                _loginsMatchingFilter = value;
+                if (value == _displayedLogins) return;
+                _displayedLogins = value;
                 OnPropertyChanged();
             }
         }
@@ -169,6 +168,21 @@ namespace Rememberall
                 if (value == _currentDetailsView) return;
                 _currentDetailsView = value;
                 OnPropertyChanged();
+            }
+        }
+
+        private string _filterText;
+        public string FilterText
+        {
+            get { return _filterText; }
+            set
+            {
+                if (value.Equals(_filterText)) return;
+                _filterText = value;
+                OnPropertyChanged();
+
+                // Update DisplayedLogins
+                UpdateDisplayedLogins();
             }
         }
 
@@ -218,7 +232,7 @@ namespace Rememberall
             LoginRepository.SaveLogin(login);
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
-            SelectedLogin = LoginsMatchingFilter.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
+            SelectedLogin = DisplayedLogins.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
 
         /// <summary>
@@ -245,6 +259,47 @@ namespace Rememberall
         {
             // Update CurrentDetailsView
             CurrentDetailsView = (SelectedLogin == null) ? null : m_loginDetailsVM;
+        }
+
+        /// <summary>
+        /// Sets DisplayedLogins to the subset of Logins in the database that are in the SelectedFolder and satisfy the Login filtering criteria
+        /// </summary>
+        private void UpdateDisplayedLogins()
+        {
+            // Get all Logins in the selected Folder
+            var loginsInSelectedFolder = LoginRepository.GetLoginsInFolder(SelectedFolder);
+            // Filter Logins in list based on FilterText
+            var filteredLogins = (String.IsNullOrEmpty(FilterText)) ? loginsInSelectedFolder : loginsInSelectedFolder.Where(login => SatisfiesLoginFilter(login));
+            // TODO Sort list based on sort order
+            // Set DisplayedLogins to list
+            DisplayedLogins = new ObservableCollection<Login>(filteredLogins);
+        }
+
+        /// <summary>
+        /// Returns true if the given Login satisfies the filtering criteria; false otherwise
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns>true if the given Login satisfies the filtering criteria; false otherwise</returns>
+        private bool SatisfiesLoginFilter(Login login)
+        {
+            // Passes filter criteria if:
+            //  FilterText is in Title, Website, Email, Username, Password, or Note
+            
+            bool isFilterTextInTitle = !String.IsNullOrEmpty(login.Title) && login.Title.ToLower().Contains(FilterText.ToLower());
+            bool isFilterTextInWebsite = !String.IsNullOrEmpty(login.Website) && login.Website.ToLower().Contains(FilterText.ToLower());
+            bool isFilterTextInEmail = !String.IsNullOrEmpty(login.Email) && login.Email.ToLower().Contains(FilterText.ToLower());
+            bool isFilterTextInUsername = !String.IsNullOrEmpty(login.Username) && login.Username.ToLower().Contains(FilterText.ToLower());
+            bool isFilterTextInPassword= !String.IsNullOrEmpty(login.Password) && login.Password.ToLower().Contains(FilterText.ToLower());
+            bool isFilterTextInNote = !String.IsNullOrEmpty(login.Note) && login.Note.ToLower().Contains(FilterText.ToLower());
+
+            if (isFilterTextInTitle
+                || isFilterTextInWebsite
+                || isFilterTextInEmail
+                || isFilterTextInUsername
+                || isFilterTextInPassword
+                || isFilterTextInNote) return true;
+
+            return false;
         }
 
         #endregion // Private methods
