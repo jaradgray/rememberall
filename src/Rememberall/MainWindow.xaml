@@ -46,6 +46,32 @@
             </Grid.RowDefinitions>
             
             <!-- TODO put a search box here -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="8"/>
+                </Grid.RowDefinitions>
+                
+                <ContentPresenter
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Width="16"
+                    Height="16"
+                    Margin="0 0 8 0"
+                    Content="{StaticResource ic_search}"/>
+                <TextBox
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontSize="16"/>
+            </Grid>
             
             <!-- TODO put a sort control here -->
 
