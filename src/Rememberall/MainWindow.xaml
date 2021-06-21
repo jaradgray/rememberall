@@ -70,7 +70,8 @@
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="2"
-                    FontSize="16"/>
+                    FontSize="16"
+                    Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             
             <!-- TODO put a sort control here -->
@@ -79,7 +80,7 @@
                 Grid.Row="2"
                 Background="Transparent"
                 ItemTemplate="{StaticResource LoginItemTemplate}"
-                ItemsSource="{Binding LoginsMatchingFilter}"
+                ItemsSource="{Binding DisplayedLogins}"
                 SelectedItem="{Binding SelectedLogin}">
             </ListView>
 
