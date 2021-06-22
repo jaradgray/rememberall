@@ -242,7 +242,7 @@ namespace Rememberall
         }
 
         /// <summary>
-        /// Saves the given Login to the database and refreshes the UI to reflect the changes
+        /// Saves the given Login to the database and refreshes the UI to show the saved Login as selected
         /// </summary>
         /// <param name="login"></param>
         private void SaveLogin(Login login)
@@ -250,6 +250,7 @@ namespace Rememberall
             LoginRepository.SaveLogin(login);
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
+            // TODO should probably use FirstOrDefault() to avoid crashes
             SelectedLogin = DisplayedLogins.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
 
