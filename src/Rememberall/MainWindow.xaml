@@ -97,6 +97,7 @@
 
             <Button
                 Grid.Row="3"
+                Style="{StaticResource Button}"
                 Command="{Binding AddLoginCommand}">
                 <!-- TODO use icon instead of text -->
                 Add

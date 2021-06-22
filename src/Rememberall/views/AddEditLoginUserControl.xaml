@@ -143,12 +143,14 @@
                 Orientation="Horizontal"
                 HorizontalAlignment="Left">
                 <Button
+                    Style="{StaticResource Button}"
                     Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
                     CommandParameter="{Binding Login}">
                     <!-- TODO set content to icon instead of text -->
                     Save
                 </Button>
                 <Button
+                    Style="{StaticResource Button}"
                     Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <!-- TODO set content to icon instead of text -->
                     Cancel
@@ -156,6 +158,7 @@
             </StackPanel>
 
             <Button
+                Style="{StaticResource Button}"
                 HorizontalAlignment="Right"
                 Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                 <!-- TODO set content to icon instead of text -->

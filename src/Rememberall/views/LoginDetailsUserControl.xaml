@@ -281,6 +281,7 @@
         <!-- Edit button -->
         <Button
             Grid.Row="1"
+            Style="{StaticResource Button}"
             HorizontalAlignment="Left"
             Command="{Binding DataContext.EditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
             <!-- TODO use icon instead of text -->
