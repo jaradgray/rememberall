@@ -36,12 +36,13 @@ namespace Rememberall
         // Constructors
 
         /// <summary>
-        /// Creates a new AddEditLoginViewModel configured for adding a new Login.
+        /// Creates a new AddEditLoginViewModel configured for adding a new Login to the given Folder.
         /// </summary>
-        public AddEditLoginViewModel()
+        public AddEditLoginViewModel(Folder folder)
         {
             Heading = "Add Login";
             Login = new Login();
+            if (folder != null && folder.FolderType == Folder.Type.Folder) Login.FolderName = folder.Name;
         }
 
         /// <summary>

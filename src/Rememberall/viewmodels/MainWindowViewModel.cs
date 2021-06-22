@@ -230,7 +230,7 @@ namespace Rememberall
 
         private void ShowAddLoginView()
         {
-            m_addEditLoginVM = new AddEditLoginViewModel();
+            m_addEditLoginVM = new AddEditLoginViewModel(SelectedFolder);
             SelectedLogin = null;
             CurrentDetailsView = m_addEditLoginVM;
         }
