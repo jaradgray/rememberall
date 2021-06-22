@@ -186,6 +186,24 @@ namespace Rememberall
             }
         }
 
+        private int _selectedSortModeIndex = 2; // TODO initialize from Settings
+        public int SelectedSortModeIndex
+        {
+            get { return _selectedSortModeIndex; }
+            set
+            {
+                if (value == _selectedSortModeIndex) return;
+                _selectedSortModeIndex = value;
+                OnPropertyChanged();
+
+                // Update DisplayedLogins
+                // TODO ideally we just sort, but maybe we need to refresh via UpdateDisplayedLogins() ?
+                DisplayedLogins = new ObservableCollection<Login>(SortLogins(DisplayedLogins));
+
+                // TODO save new value to Settings
+            }
+        }
+
         #endregion // Properties and backing fields
 
         #region Private members
@@ -224,7 +242,7 @@ namespace Rememberall
         }
 
         /// <summary>
-        /// Saves the given Login to the database and refreshes the UI to reflect the changes
+        /// Saves the given Login to the database and refreshes the UI to show the saved Login as selected
         /// </summary>
         /// <param name="login"></param>
         private void SaveLogin(Login login)
@@ -232,6 +250,7 @@ namespace Rememberall
             LoginRepository.SaveLogin(login);
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
+            // TODO should probably use FirstOrDefault() to avoid crashes
             SelectedLogin = DisplayedLogins.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
 
@@ -262,7 +281,8 @@ namespace Rememberall
         }
 
         /// <summary>
-        /// Sets DisplayedLogins to the subset of Logins in the database that are in the SelectedFolder and satisfy the Login filtering criteria
+        /// Sets DisplayedLogins to the subset of Logins in the database that are in the SelectedFolder and satisfy
+        /// the Login filtering criteria, ordered based on SelectedSortModeIndex
         /// </summary>
         private void UpdateDisplayedLogins()
         {
@@ -270,9 +290,10 @@ namespace Rememberall
             var loginsInSelectedFolder = LoginRepository.GetLoginsInFolder(SelectedFolder);
             // Filter Logins in list based on FilterText
             var filteredLogins = (String.IsNullOrEmpty(FilterText)) ? loginsInSelectedFolder : loginsInSelectedFolder.Where(login => SatisfiesLoginFilter(login));
-            // TODO Sort list based on sort order
-            // Set DisplayedLogins to list
-            DisplayedLogins = new ObservableCollection<Login>(filteredLogins);
+            // Sort Logins based on SelectedSortModeIndex
+            var sortedFilteredLogins = SortLogins(filteredLogins);
+            // Set DisplayedLogins to the sorted, filtered list
+            DisplayedLogins = new ObservableCollection<Login>(sortedFilteredLogins);
         }
 
         /// <summary>
@@ -300,6 +321,31 @@ namespace Rememberall
                 || isFilterTextInNote) return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// Returns a new Collection containing the elements in the given collection, ordered based on SelectedSortModeIndex
+        /// </summary>
+        /// <param name="logins"></param>
+        /// <returns></returns>
+        private IOrderedEnumerable<Login> SortLogins(IEnumerable<Login> logins)
+        {
+            // Note: make sure the order of cases matches the order the sort modes appear in the view
+            switch (SelectedSortModeIndex)
+            {
+                case 0:
+                    return logins.OrderBy(login => login.Title);
+                case 1:
+                    return logins.OrderBy(login => login.TicksCreated);
+                case 2:
+                    return logins.OrderByDescending(login => login.TicksCreated);
+                case 3:
+                    return logins.OrderBy(login => login.TicksModified);
+                case 4:
+                    return logins.OrderByDescending(login => login.TicksModified);
+                default:
+                    return null;
+            }
         }
 
         #endregion // Private methods
