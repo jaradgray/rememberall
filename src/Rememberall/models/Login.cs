@@ -8,6 +8,7 @@ namespace Rememberall
 {
     public class Login
     {
+        public const string BLANK_FOLDER_NAME = "Uncategorized";
 
         public long TicksCreated { get; private set; }
         public long TicksModified { get; set; }
@@ -35,6 +36,7 @@ namespace Rememberall
         {
             TicksCreated = DateTime.Now.Ticks;
             TicksModified = TicksCreated;
+            FolderName = BLANK_FOLDER_NAME;
         }
 
         /// <summary>

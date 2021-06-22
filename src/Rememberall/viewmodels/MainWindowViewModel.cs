@@ -247,6 +247,10 @@ namespace Rememberall
         /// <param name="login"></param>
         private void SaveLogin(Login login)
         {
+            // Validate Login
+            // TODO should this be somewhere else?
+            if (string.IsNullOrEmpty(login.FolderName)) login.FolderName = Login.BLANK_FOLDER_NAME;
+
             LoginRepository.SaveLogin(login);
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));

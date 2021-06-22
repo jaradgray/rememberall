@@ -97,8 +97,6 @@ namespace Rememberall
         /// <param name="login"></param>
         private static void InsertLogin(Login login)
         {
-            // TODO validate Login at some point
-            login.FolderName = "Dummy folder";
             using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
                 string columnList = "(TicksCreated, TicksModified, FolderName, FaviconPath, Title, Website, Email, Username, Password, Note, IsFavorite)";
