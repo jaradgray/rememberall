@@ -273,6 +273,24 @@
                         Padding="8"
                         FontSize="16"
                         Text="{Binding Login.Note}"/>
+                    
+                    <!-- Timestamps -->
+                    <TextBlock
+                        Margin="0 16 0 8"
+                        Foreground="{StaticResource foreground_disabled}">
+                        <TextBlock.Inlines>
+                            <Run FontWeight="Bold" Text="Created: "/>
+                            <Run Text="{Binding Login.DateCreatedString, Mode=OneWay}"/>
+                        </TextBlock.Inlines>
+                    </TextBlock>
+
+                    <TextBlock
+                        Foreground="{StaticResource foreground_disabled}">
+                        <TextBlock.Inlines>
+                            <Run FontWeight="Bold" Text="Updated: "/>
+                            <Run Text="{Binding Login.DateModifiedString, Mode=OneWay}"/>
+                        </TextBlock.Inlines>
+                    </TextBlock>
 
                 </StackPanel>
             </Grid>
