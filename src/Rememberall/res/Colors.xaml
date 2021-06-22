@@ -24,6 +24,9 @@
     <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
     <SolidColorBrush x:Key="foreground_disabled" Color="{StaticResource white_38}"/>
     
+    <SolidColorBrush x:Key="foreground_blue" Color="#2394fd"/>
+    <SolidColorBrush x:Key="foreground_red" Color="#cf6679"/>
+    
     <SolidColorBrush x:Key="line_dark" Color="{StaticResource black_30}"/>
     
     <!-- Button -->

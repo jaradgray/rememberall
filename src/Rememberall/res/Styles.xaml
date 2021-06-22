@@ -59,7 +59,8 @@
                         <Trigger Property="IsEnabled" Value="false">
                             <Setter Property="Background" Value="{StaticResource Button.Disabled.Overlay}" TargetName="overlay" />
                             <Setter Property="BorderBrush" Value="{StaticResource Button.Disabled.Border}" TargetName="border" />
-                            <Setter Property="TextElement.Foreground" Value="{StaticResource foreground_disabled}" TargetName="contentPresenter" />
+                            <!--<Setter Property="TextElement.Foreground" Value="{StaticResource foreground_disabled}" TargetName="contentPresenter" />-->
+                            <Setter Property="Opacity" Value="0.38" TargetName="contentPresenter" />
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
