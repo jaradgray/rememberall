@@ -24,12 +24,18 @@ namespace Rememberall
 
         public string TitleOrWebsite
         {
-            get { return Title ?? Website; }
+            get
+            {
+                return string.IsNullOrEmpty(Title) ? Website : Title;
+            }
         }
 
         public string UsernameOrEmail
         {
-            get { return Username ?? Email; }
+            get
+            {
+                return String.IsNullOrEmpty(Username) ? Email : Username;
+            }
         }
 
         public Login()
