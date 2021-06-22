@@ -44,7 +44,7 @@
 
                     <!-- Folder, Title, Website "card" -->
                     <Border
-                        Background="#333333"
+                        Background="{StaticResource surface_elevation_1}"
                         Margin="0 0 0 16">
 
                         <StackPanel>
@@ -150,7 +150,7 @@
 
                     <!-- Username, Email, Password "card" -->
                     <Border
-                        Background="#333333"
+                        Background="{StaticResource surface_elevation_1}"
                         Margin="0 0 0 16">
                         <StackPanel>
 
@@ -269,7 +269,7 @@
                         Text="Notes"/>
 
                     <TextBlock
-                        Background="#333333"
+                        Background="{StaticResource surface_elevation_1}"
                         Padding="8"
                         FontSize="16"
                         Text="{Binding Login.Note}"/>

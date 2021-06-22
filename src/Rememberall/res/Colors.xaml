@@ -12,6 +12,7 @@
     <!-- Brushes -->
 
     <SolidColorBrush x:Key="window_background" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="surface_elevation_1" Color="#1d1d1d"/>
     
     <SolidColorBrush x:Key="foreground_highEmphasis" Color="{StaticResource white_87}"/>
     <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
