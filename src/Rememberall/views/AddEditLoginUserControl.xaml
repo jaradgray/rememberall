@@ -136,38 +136,42 @@
         </ScrollViewer>
         
         <!-- Bottom buttons -->
-        <Grid
+        <Border
             Grid.Row="3"
-            Grid.ColumnSpan="3">
-            <StackPanel
-                Orientation="Horizontal"
-                HorizontalAlignment="Left">
+            Grid.ColumnSpan="3"
+            Padding="8 4"
+            Background="{StaticResource surface_elevation_4dp}">
+            <Grid>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <Button
+                        Style="{StaticResource Button}"
+                        Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                        CommandParameter="{Binding Login}">
+                        <ContentPresenter
+                            Width="16"
+                            Height="16"
+                            Content="{StaticResource ic_save}"/>
+                    </Button>
+                    <Button
+                        Style="{StaticResource Button}"
+                        Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                        <!-- TODO set content to icon instead of text -->
+                        Cancel
+                    </Button>
+                </StackPanel>
+
                 <Button
                     Style="{StaticResource Button}"
-                    Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                    CommandParameter="{Binding Login}">
+                    HorizontalAlignment="Right"
+                    Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
                     <ContentPresenter
                         Width="16"
                         Height="16"
-                        Content="{StaticResource ic_save}"/>
+                        Content="{StaticResource ic_delete}"/>
                 </Button>
-                <Button
-                    Style="{StaticResource Button}"
-                    Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                    <!-- TODO set content to icon instead of text -->
-                    Cancel
-                </Button>
-            </StackPanel>
-
-            <Button
-                Style="{StaticResource Button}"
-                HorizontalAlignment="Right"
-                Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                <ContentPresenter
-                    Width="16"
-                    Height="16"
-                    Content="{StaticResource ic_delete}"/>
-            </Button>
-        </Grid>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

@@ -95,15 +95,20 @@
                 SelectedItem="{Binding SelectedLogin}">
             </ListView>
 
-            <Button
+            <!-- Add button area -->
+            <Border
                 Grid.Row="3"
-                Style="{StaticResource Button}"
-                Command="{Binding AddLoginCommand}">
-                <ContentPresenter
-                    Width="16"
-                    Height="16"
-                    Content="{StaticResource ic_add}"/>
-            </Button>
+                Padding="8 4"
+                Background="{StaticResource surface_elevation_4dp}">
+                <Button
+                    Style="{StaticResource Button}"
+                    Command="{Binding AddLoginCommand}">
+                        <ContentPresenter
+                        Width="16"
+                        Height="16"
+                        Content="{StaticResource ic_add}"/>
+                </Button>
+            </Border>
         </Grid>
         
         <!-- Item details -->

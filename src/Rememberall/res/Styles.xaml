@@ -9,7 +9,15 @@
         <Setter Property="BorderThickness" Value="0 0 0 1"/>
         <Setter Property="BorderBrush" Value="{StaticResource line_dark}"/>
     </Style>
-    
+
+    <!-- Border: 1px, dark -->
+    <Style
+        x:Key="Border_1px_Dark"
+        TargetType="{x:Type Border}">
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="BorderBrush" Value="{StaticResource line_dark}"/>
+    </Style>
+
     <!-- Button -->
     <Style
         x:Key="Button"

@@ -279,14 +279,19 @@
         </ScrollViewer>
 
         <!-- Edit button -->
-        <Button
+        <Border
             Grid.Row="1"
-            Style="{StaticResource Button}"
-            HorizontalAlignment="Left"
-            Command="{Binding DataContext.EditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-            <ContentPresenter
-                Content="{StaticResource ic_edit}"/>
-        </Button>
+            Style="{StaticResource Border_1px_Dark}"
+            Padding="8 4"
+            Background="{StaticResource surface_elevation_4dp}">
+            <Button
+                Style="{StaticResource Button}"
+                HorizontalAlignment="Left"
+                Command="{Binding DataContext.EditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <ContentPresenter
+                    Content="{StaticResource ic_edit}"/>
+            </Button>
+        </Border>
     </Grid>
     
 </UserControl>

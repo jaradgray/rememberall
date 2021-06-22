@@ -14,11 +14,13 @@
     <Color x:Key="surface_overlay_4dp">#16FFFFFF</Color>
     <Color x:Key="surface_overlay_8dp">#1eFFFFFF</Color>
     <Color x:Key="surface_overlay_16dp">#26FFFFFF</Color>
+    <Color x:Key="surface_overlay_24dp">#28FFFFFF</Color>
     
     <!-- Brushes -->
 
     <SolidColorBrush x:Key="window_background" Color="{StaticResource darkest}"/>
     <SolidColorBrush x:Key="surface_elevation_1" Color="#1d1d1d"/>
+    <SolidColorBrush x:Key="surface_elevation_4dp" Color="#272727"/>
     
     <SolidColorBrush x:Key="foreground_highEmphasis" Color="{StaticResource white_87}"/>
     <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
@@ -31,10 +33,10 @@
     
     <!-- Button -->
     <SolidColorBrush x:Key="Button.Static.Background" Color="{StaticResource darkest}"/>
-    <SolidColorBrush x:Key="Button.Static.Overlay" Color="{StaticResource surface_overlay_2dp}"/>
+    <SolidColorBrush x:Key="Button.Static.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
     <SolidColorBrush x:Key="Button.Static.Border" Color="{StaticResource darkest}"/>
 
-    <SolidColorBrush x:Key="Button.MouseOver.Overlay" Color="{StaticResource surface_overlay_4dp}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Overlay" Color="{StaticResource surface_overlay_16dp}"/>
     <SolidColorBrush x:Key="Button.MouseOver.Border" Color="{StaticResource darkest}"/>
 
     <SolidColorBrush x:Key="Button.Pressed.Overlay" Color="{StaticResource darkest}"/>
