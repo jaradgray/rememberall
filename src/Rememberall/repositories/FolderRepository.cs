@@ -31,8 +31,7 @@ namespace Rememberall
             // Populate result with a Folder object for each unique FolderName in LoginTable
             using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
             {
-                // TODO put in alphabetical order
-                string query = "SELECT DISTINCT FolderName FROM LoginTable";
+                string query = "SELECT DISTINCT FolderName FROM LoginTable ORDER BY FolderName ASC";
                 var folderNames = connection.Query<string>(query, new DynamicParameters());
                 foreach(string name in folderNames)
                 {
