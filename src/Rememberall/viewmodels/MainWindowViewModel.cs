@@ -252,8 +252,12 @@ namespace Rememberall
             if (string.IsNullOrEmpty(login.FolderName)) login.FolderName = Login.BLANK_FOLDER_NAME;
 
             LoginRepository.SaveLogin(login);
+            // Refresh AllFolders from the database
+            bool isAllFoldersSelected = SelectedFolder.FolderType == Folder.Type.AllItems; // persist whether SelectedFolder is the AllItems Folder
             AllFolders = FolderRepository.GetAllFolders();
-            SelectedFolder = AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
+            // Set SelectedFolder to AllItems or the given Login's Folder
+            SelectedFolder = (isAllFoldersSelected) ? AllFolders[0] : AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
+            // Set SelectedLogin to the login we just saved
             // TODO should probably use FirstOrDefault() to avoid crashes
             SelectedLogin = DisplayedLogins.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
