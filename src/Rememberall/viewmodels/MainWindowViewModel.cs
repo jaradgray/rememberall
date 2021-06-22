@@ -247,9 +247,13 @@ namespace Rememberall
         /// <param name="login"></param>
         private void SaveLogin(Login login)
         {
-            // Validate Login
+            // Do some final processing/validation of the Login before giving it to the database
             // TODO should this be somewhere else?
             if (string.IsNullOrEmpty(login.FolderName)) login.FolderName = Login.BLANK_FOLDER_NAME;
+            // TicksModified and (possibly) TicksCreated
+            long now = DateTime.Now.Ticks;
+            if (!LoginRepository.LoginExists(login)) login.TicksCreated = now;
+            login.TicksModified = now;
 
             LoginRepository.SaveLogin(login);
             // Refresh AllFolders from the database

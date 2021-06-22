@@ -56,6 +56,22 @@ namespace Rememberall
             else InsertLogin(login);
         }
 
+        /// <summary>
+        /// Returns true if a record exists in the database's LoginTable whose TicksCreated
+        /// column matches the given Login's TicksCreated property, otherwise returns false
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
+        public static bool LoginExists(Login login)
+        {
+            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            {
+                string query = "SELECT * FROM LoginTable WHERE TicksCreated = " + login.TicksCreated;
+                var output = connection.Query<Login>(query, new DynamicParameters());
+                return output.Count() > 0;
+            }
+        }
+
         #endregion // Public methods
 
 
@@ -72,22 +88,6 @@ namespace Rememberall
                 string query = "SELECT * FROM LoginTable";
                 var output = connection.Query<Login>(query, new DynamicParameters());
                 return new ObservableCollection<Login>(output);
-            }
-        }
-
-        /// <summary>
-        /// Returns true if a record exists in the database's LoginTable whose TicksCreated
-        /// column matches the given Login's TicksCreated property, otherwise returns false
-        /// </summary>
-        /// <param name="login"></param>
-        /// <returns></returns>
-        private static bool LoginExists(Login login)
-        {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
-            {
-                string query = "SELECT * FROM LoginTable WHERE TicksCreated = " + login.TicksCreated;
-                var output = connection.Query<Login>(query, new DynamicParameters());
-                return output.Count() > 0;
             }
         }
 
