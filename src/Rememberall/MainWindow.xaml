@@ -45,7 +45,7 @@
                 <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             
-            <!-- TODO put a search box here -->
+            <!-- Filter control -->
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8"/>
@@ -74,7 +74,17 @@
                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             
-            <!-- TODO put a sort control here -->
+            <!-- Sort control -->
+            <ComboBox
+                Grid.Row="1"
+                FontSize="12"
+                SelectedIndex="{Binding SelectedSortModeIndex}">
+                <ComboBoxItem Content="Alphabetical"/>
+                <ComboBoxItem Content="Date created (oldest)"/>
+                <ComboBoxItem Content="Date created (newest)"/>
+                <ComboBoxItem Content="Date modified (oldest)"/>
+                <ComboBoxItem Content="Date modified (newest)"/>
+            </ComboBox>
 
             <ListView
                 Grid.Row="2"
