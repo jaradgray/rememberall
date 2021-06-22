@@ -21,6 +21,16 @@ namespace Rememberall
         public string Note { get; set; }
         public bool IsFavorite { get; set; }
 
+        public string TitleOrWebsite
+        {
+            get { return Title ?? Website; }
+        }
+
+        public string UsernameOrEmail
+        {
+            get { return Username ?? Email; }
+        }
+
         public Login()
         {
             TicksCreated = DateTime.Now.Ticks;

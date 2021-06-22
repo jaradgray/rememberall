@@ -334,7 +334,7 @@ namespace Rememberall
             switch (SelectedSortModeIndex)
             {
                 case 0:
-                    return logins.OrderBy(login => login.Title);
+                    return logins.OrderBy(login => login.TitleOrWebsite);
                 case 1:
                     return logins.OrderBy(login => login.TicksCreated);
                 case 2:
