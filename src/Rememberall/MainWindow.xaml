@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:Rememberall"
         mc:Ignorable="d"
         Title="Rememberall"
-        Height="450"
-        Width="800"
+        Height="700"
+        Width="1300"
+        WindowStartupLocation="CenterScreen"
         Background="{DynamicResource window_background}">
     <Window.Resources>
         <ResourceDictionary>
