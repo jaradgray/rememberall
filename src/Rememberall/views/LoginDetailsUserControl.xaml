@@ -304,13 +304,14 @@
                                         FontSize="16"
                                         Text="{Binding Login.Password}"/>
 
-                                    <!-- Show password toggle -->
+                                    <!-- Toggle password visibility button -->
                                     <Button
                                         Grid.Column="2"
                                         Grid.Row="1"
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
-                                        ToolTip="Toggle visibility">
+                                        ToolTip="Toggle visibility"
+                                        Visibility="Collapsed">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"

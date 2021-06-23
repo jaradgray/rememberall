@@ -41,21 +41,6 @@ namespace Rememberall
             }
         }
 
-        private ICommand _togglePasswordVisibilityCommand;
-        public ICommand TogglePasswordVisibilityCommand
-        {
-            get
-            {
-                if (_togglePasswordVisibilityCommand == null)
-                {
-                    _togglePasswordVisibilityCommand = new RelayCommand(
-                        param => TogglePasswordVisibility(),
-                        param => true);
-                }
-                return _togglePasswordVisibilityCommand;
-            }
-        }
-
         #endregion // Commands
 
 
@@ -88,11 +73,6 @@ namespace Rememberall
             url = url.Trim();
             if (!url.StartsWith("http://") && !url.StartsWith("https://")) url = "http://" + url;
             System.Diagnostics.Process.Start(url);
-        }
-
-        private void TogglePasswordVisibility()
-        {
-            Console.WriteLine("TODO toggle password visibility");
         }
 
         #endregion // Private methods
