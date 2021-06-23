@@ -50,6 +50,6 @@
     <SolidColorBrush x:Key="Button.Borderless.Static.Overlay" Color="Transparent"/>
     <SolidColorBrush x:Key="Button.Borderless.MouseOver.Overlay" Color="{StaticResource surface_overlay_4dp}"/>
     <SolidColorBrush x:Key="Button.Borderless.Pressed.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
-    <SolidColorBrush x:Key="Button.Borderless.Disabled.Overlay" Color="{StaticResource surface_overlay_4dp}"/>
+    <SolidColorBrush x:Key="Button.Borderless.Disabled.Overlay" Color="Transparent"/>
 
 </ResourceDictionary>
