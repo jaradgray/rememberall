@@ -159,7 +159,9 @@
                                         Grid.Row="1"
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
-                                        ToolTip="Copy">
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Website}">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"
@@ -175,8 +177,6 @@
                         Background="{StaticResource surface_elevation_1}"
                         Margin="0 0 0 16">
                         <StackPanel>
-
-                            <!-- TODO add folder details here -->
 
                             <!-- Username -->
                             <Border
@@ -214,7 +214,9 @@
                                         Grid.Row="1"
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
-                                        ToolTip="Copy">
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Username}">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"
@@ -259,7 +261,9 @@
                                         Grid.Row="1"
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
-                                        ToolTip="Copy">
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Email}">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"
@@ -317,7 +321,9 @@
                                         Grid.Row="1"
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
-                                        ToolTip="Copy">
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Password}">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"
