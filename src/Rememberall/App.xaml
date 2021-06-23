@@ -9,7 +9,12 @@
                 <!--
                     Including resources here makes them available anywhere in the app
                     as Static/Dynamic Resources, and via App.Current.Resources
+                
+                    Remember: Order matters! A ResourceDictionary declared here only has
+                    access to resources in ResourceDictionaries declared BEFORE itself
+                    (even though IntelliSense doesn't think so)
                 -->
+                <ResourceDictionary Source="pack://application:,,,/res/Dimens.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/res/Icons.xaml"/>
                 <ResourceDictionary Source="pack://application:,,,/res/Styles.xaml"/>
             </ResourceDictionary.MergedDictionaries>

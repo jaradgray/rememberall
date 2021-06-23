@@ -39,7 +39,7 @@
                     <!-- Login Information section -->
                     <TextBlock
                         Margin="0 0 0 8"
-                        FontSize="16"
+                        FontSize="{StaticResource FontSize.Normal}"
                         Text="Login Information"/>
 
                     <!-- Folder, Title, Website "card" -->
@@ -68,13 +68,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Folder"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.FolderName}"/>
                                 </Grid>
                             </Border>
@@ -99,13 +100,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Title"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.Title}"/>
                                 </Grid>
                             </Border>
@@ -131,13 +133,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Website"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.Website}"/>
 
                                     <!-- Navigate button -->
@@ -201,13 +204,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Username"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.Username}"/>
 
                                     <!-- Copy button -->
@@ -248,13 +252,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Email"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.Email}"/>
 
                                     <!-- Copy button -->
@@ -295,13 +300,14 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Password"/>
 
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
-                                        FontSize="16"
+                                        FontSize="{StaticResource FontSize.Normal}"
                                         Text="{Binding Login.Password}"/>
 
                                     <!-- Toggle password visibility button -->
@@ -340,19 +346,20 @@
                     <!-- Notes section -->
                     <TextBlock
                         Margin="0 0 0 8"
-                        FontSize="16"
+                        FontSize="{StaticResource FontSize.Normal}"
                         Text="Notes"/>
 
                     <TextBlock
                         Background="{StaticResource surface_elevation_1}"
                         Padding="8"
-                        FontSize="16"
+                        FontSize="{StaticResource FontSize.Normal}"
                         Text="{Binding Login.Note}"/>
                     
                     <!-- Timestamps -->
                     <TextBlock
                         Margin="0 16 0 8"
-                        Foreground="{StaticResource foreground_disabled}">
+                        Foreground="{StaticResource foreground_disabled}"
+                        FontSize="{StaticResource FontSize.Small}">
                         <TextBlock.Inlines>
                             <Run FontWeight="Bold" Text="Created: "/>
                             <Run Text="{Binding Login.DateCreatedString, Mode=OneWay}"/>
@@ -360,7 +367,8 @@
                     </TextBlock>
 
                     <TextBlock
-                        Foreground="{StaticResource foreground_disabled}">
+                        Foreground="{StaticResource foreground_disabled}"
+                        FontSize="{StaticResource FontSize.Small}">
                         <TextBlock.Inlines>
                             <Run FontWeight="Bold" Text="Updated: "/>
                             <Run Text="{Binding Login.DateModifiedString, Mode=OneWay}"/>

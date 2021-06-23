@@ -39,7 +39,7 @@
                     <!-- Login Information section -->
                     <TextBlock
                         Margin="0 0 0 8"
-                        FontSize="16"
+                        FontSize="{StaticResource FontSize.Normal}"
                         Text="{Binding Heading}"/>
 
                     <!-- Folder, Title, Website "card" -->
@@ -68,6 +68,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Folder"/>
 
                                     <TextBox
@@ -98,6 +99,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Title"/>
 
                                     <TextBox
@@ -127,6 +129,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Website"/>
 
                                     <TextBox
@@ -165,6 +168,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Username"/>
 
                                     <TextBox
@@ -195,6 +199,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Email"/>
 
                                     <TextBox
@@ -224,6 +229,7 @@
                                     <TextBlock
                                         Grid.Column="1"
                                         Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
                                         Text="Password"/>
 
                                     <TextBox
@@ -239,7 +245,7 @@
                     <!-- Notes section -->
                     <TextBlock
                         Margin="0 0 0 8"
-                        FontSize="16"
+                        FontSize="{StaticResource FontSize.Normal}"
                         Text="Notes"/>
 
                     <Border
