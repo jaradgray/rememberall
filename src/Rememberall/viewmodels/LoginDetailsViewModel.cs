@@ -11,18 +11,18 @@ namespace Rememberall
     {
         #region Commands
 
-        private ICommand _openWebsiteCommand;
-        public ICommand OpenWebsiteCommand
+        private ICommand _openUrlCommand;
+        public ICommand OpenUrlCommand
         {
             get
             {
-                if (_openWebsiteCommand == null)
+                if (_openUrlCommand == null)
                 {
-                    _openWebsiteCommand = new RelayCommand(
-                        param => OpenWebsite((string)param),
+                    _openUrlCommand = new RelayCommand(
+                        param => OpenUrl((string)param),
                         param => !String.IsNullOrEmpty((string)param));
                 }
-                return _openWebsiteCommand;
+                return _openUrlCommand;
             }
         }
 
@@ -78,9 +78,16 @@ namespace Rememberall
 
         #region Private methods
 
-        private void OpenWebsite(string url)
+        /// <summary>
+        /// Formats the given string into a url that can be opened by a web broswer, and opens
+        /// it in the default browser.
+        /// </summary>
+        /// <param name="url"></param>
+        private void OpenUrl(string url)
         {
-            Console.WriteLine("TODO open website");
+            url = url.Trim();
+            if (!url.StartsWith("http://") && !url.StartsWith("https://")) url = "http://" + url;
+            System.Diagnostics.Process.Start(url);
         }
 
         private void TogglePasswordVisibility()
