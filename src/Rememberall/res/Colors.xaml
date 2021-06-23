@@ -62,4 +62,10 @@
     <SolidColorBrush x:Key="TextBox.Focus.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{StaticResource white_60}"/>
 
+    <!-- TextBox.Dark -->
+    <SolidColorBrush x:Key="TextBox.Dark.Static.Background" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="TextBox.Dark.Static.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Dark.MouseOver.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="TextBox.Dark.Focus.Border" Color="{StaticResource white_60}"/>
+
 </ResourceDictionary>

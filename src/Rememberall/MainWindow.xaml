@@ -28,7 +28,8 @@
         
         <!-- Folders list -->
         <Grid
-            Grid.Column="0">
+            Grid.Column="0"
+            Background="{StaticResource surface_elevation_4dp}">
             <ListView
                 x:Name="ListView_Folders"
                 Background="Transparent"
@@ -38,7 +39,8 @@
 
         <!-- Items list -->
         <Grid
-            Grid.Column="1">
+            Grid.Column="1"
+            Background="{StaticResource surface_elevation_4dp}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -71,7 +73,7 @@
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="2"
-                    FontSize="16"
+                    Style="{StaticResource TextBox.Dark}"
                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             
