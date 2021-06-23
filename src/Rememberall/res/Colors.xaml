@@ -51,5 +51,15 @@
     <SolidColorBrush x:Key="Button.Borderless.MouseOver.Overlay" Color="{StaticResource surface_overlay_4dp}"/>
     <SolidColorBrush x:Key="Button.Borderless.Pressed.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
     <SolidColorBrush x:Key="Button.Borderless.Disabled.Overlay" Color="Transparent"/>
+    
+    <!-- TextBox -->
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="TextBox.MouseOver.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="{StaticResource white_38}"/>
+
+    <SolidColorBrush x:Key="TextBox.Focus.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{StaticResource white_60}"/>
 
 </ResourceDictionary>
