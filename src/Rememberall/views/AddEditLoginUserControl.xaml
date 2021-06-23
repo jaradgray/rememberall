@@ -247,7 +247,9 @@
                         Padding="8">
                         <TextBox
                             Style="{StaticResource TextBox}"
-                            Text="{Binding Login.Note}"/>
+                            Text="{Binding Login.Note}"
+                            TextWrapping="Wrap"
+                            AcceptsReturn="True"/>
                     </Border>
 
                 </StackPanel>
