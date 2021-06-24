@@ -363,6 +363,7 @@
                         Padding="8"
                         FontSize="{StaticResource FontSize.Normal}"
                         FontFamily="Consolas"
+                        TextWrapping="Wrap"
                         Visibility="{Binding NoteVisibility}"
                         Text="{Binding Login.Note}"/>
                     
