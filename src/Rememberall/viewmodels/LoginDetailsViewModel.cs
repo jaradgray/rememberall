@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Rememberall
 {
@@ -50,7 +51,7 @@ namespace Rememberall
                 if (_toggleObscurePasswordCommand == null)
                 {
                     _toggleObscurePasswordCommand = new RelayCommand(
-                        param => ToggleObscurePassword(),
+                        param => IsPasswordObscured = !IsPasswordObscured,
                         param => true);
                 }
                 return _toggleObscurePasswordCommand;
@@ -126,7 +127,42 @@ namespace Rememberall
             }
         }
 
+        // is it readonly or full?
+        public Path TogglePasswordIconPath
+        {
+            get
+            {
+                string key = IsPasswordObscured ? "ic_show_password" : "ic_hide_password";
+                return (Path)App.Current.FindResource(key);
+            }
+        }
+
+        private bool _isPasswordObscured;
+        public bool IsPasswordObscured
+        {
+            get { return _isPasswordObscured; }
+            private set
+            {
+                _isPasswordObscured = value;
+
+                // TODO refresh readonly properties dependent on IsPasswordObscured
+                OnPropertyChanged(nameof(TogglePasswordIconPath));
+
+                // TODO persist value in Settings
+            }
+        }
+
         #endregion // Properties
+
+
+        #region Constructor
+
+        public LoginDetailsViewModel()
+        {
+            IsPasswordObscured = false; // TODO initialize from persisted Settings
+        }
+
+        #endregion // Constructor
 
 
         #region Private methods
@@ -141,11 +177,6 @@ namespace Rememberall
             url = url.Trim();
             if (!url.StartsWith("http://") && !url.StartsWith("https://")) url = "http://" + url;
             System.Diagnostics.Process.Start(url);
-        }
-
-        private void ToggleObscurePassword()
-        {
-            Console.WriteLine("TODO toggle obscure password");
         }
 
         #endregion // Private methods
