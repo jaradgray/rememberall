@@ -80,6 +80,8 @@
             <!-- Sort control -->
             <ComboBox
                 Grid.Row="1"
+                Style="{StaticResource ComboBox}"
+                IsEditable="True"
                 FontSize="12"
                 SelectedIndex="{Binding SelectedSortModeIndex}">
                 <ComboBoxItem Content="Alphabetical"/>

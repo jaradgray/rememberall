@@ -74,7 +74,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.FolderName}"/>
                                 </Grid>
                             </Border>
@@ -105,7 +104,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.Title}"/>
                                 </Grid>
                             </Border>
@@ -135,7 +133,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.Website}"/>
                                 </Grid>
                             </Border>
@@ -174,7 +171,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.Username}"/>
                                 </Grid>
                             </Border>
@@ -205,7 +201,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.Email}"/>
                                 </Grid>
                             </Border>
@@ -235,7 +230,6 @@
                                     <TextBox
                                         Grid.Column="1"
                                         Grid.Row="2"
-                                        Style="{StaticResource TextBox}"
                                         Text="{Binding Login.Password}"/>
                                 </Grid>
                             </Border>
@@ -252,7 +246,6 @@
                         Background="{StaticResource surface_elevation_1}"
                         Padding="8">
                         <TextBox
-                            Style="{StaticResource TextBox}"
                             Text="{Binding Login.Note}"
                             TextWrapping="Wrap"
                             AcceptsReturn="True"/>
