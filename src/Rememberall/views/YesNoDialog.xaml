@@ -1,0 +1,59 @@
+﻿<Window x:Class="Rememberall.YesNoDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Rememberall"
+        mc:Ignorable="d"
+        Title="YesNoDialog"
+        SizeToContent="WidthAndHeight"
+        MinWidth="300"
+        MinHeight="100"
+        Background="{DynamicResource window_background}"
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="8"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="8"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="8"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="8"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock
+            x:Name="TextBlock_Message"
+            Grid.Column="1"
+            Grid.Row="1"
+            Foreground="{StaticResource foreground_highEmphasis}"
+            FontSize="{StaticResource FontSize.Normal}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Margin="8 32"
+            Text="{Binding Message}"/>
+
+        <StackPanel
+            Grid.Column="1"
+            Grid.Row="2"
+            Orientation="Horizontal"
+            HorizontalAlignment="Right">
+            <Button
+                x:Name="Button_Affirmative"
+                Style="{StaticResource Button.HighEmphasis}"
+                Margin="0 0 8 0"
+                Content="{Binding AffirmativeText}"
+                Click="Button_Affirmative_Click"/>
+            <Button
+                x:Name="Button_Negative"
+                Style="{StaticResource Button}"
+                Content="{Binding NegativeText}"
+                Click="Button_Negative_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>
