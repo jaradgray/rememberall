@@ -180,7 +180,9 @@ namespace Rememberall
                 OnPropertyChanged(nameof(IconPath_TogglePasswordButton));
                 OnPropertyChanged(nameof(DisplayedPasswordText));
 
-                // TODO persist value in Settings
+                // Persist value in Settings
+                Properties.Settings.Default.IsPasswordObscured = _isPasswordObscured;
+                Properties.Settings.Default.Save();
             }
         }
 
@@ -191,7 +193,7 @@ namespace Rememberall
 
         public LoginDetailsViewModel()
         {
-            IsPasswordObscured = false; // TODO initialize from persisted Settings
+            IsPasswordObscured = Properties.Settings.Default.IsPasswordObscured;
         }
 
         #endregion // Constructor
