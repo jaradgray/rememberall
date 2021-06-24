@@ -119,6 +119,14 @@
         </Setter>
     </Style>
     
+    <!-- Button.HighEmphasis -->
+    <Style
+        x:Key="Button.HighEmphasis"
+        TargetType="{x:Type Button}"
+        BasedOn="{StaticResource Button}">
+        <Setter Property="Background" Value="{StaticResource Button.HighEmphasis.Static.Background}"/>
+    </Style>
+    
     <!-- TextBox -->
     <Style
         TargetType="{x:Type TextBox}"

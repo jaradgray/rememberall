@@ -271,6 +271,11 @@ namespace Rememberall
         /// </summary>
         private void DeleteSelectedLogin()
         {
+            // Prompt user for confirmation
+            var prompt = new YesNoDialog();
+            prompt.Owner = App.Current.MainWindow;
+            if (prompt.ShowDialog() != true) return;
+
             // Delete SelectedLogin from the database
             LoginRepository.DeleteLogin(SelectedLogin);
 
