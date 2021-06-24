@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Rememberall
@@ -46,6 +47,49 @@ namespace Rememberall
 
         #region Properties
 
+        public Visibility TitleVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Title) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        public Visibility WebsiteVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Website) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        public Visibility UsernameVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Username) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        public Visibility EmailVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Email) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        public Visibility PasswordVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Password) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+        public Visibility NoteVisibility
+        {
+            get
+            {
+                return String.IsNullOrEmpty(_login.Note) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
         private Login _login;
         public Login Login
         {
@@ -55,6 +99,15 @@ namespace Rememberall
                 if (value == _login) return;
                 _login = value;
                 OnPropertyChanged();
+
+                // Refresh properties dependent on Login
+                if (_login == null) return;
+                OnPropertyChanged(nameof(TitleVisibility));
+                OnPropertyChanged(nameof(WebsiteVisibility));
+                OnPropertyChanged(nameof(UsernameVisibility));
+                OnPropertyChanged(nameof(EmailVisibility));
+                OnPropertyChanged(nameof(PasswordVisibility));
+                OnPropertyChanged(nameof(NoteVisibility));
             }
         }
 

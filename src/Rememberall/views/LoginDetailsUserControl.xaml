@@ -82,7 +82,8 @@
 
                             <!-- Title -->
                             <Border
-                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                Style="{StaticResource Border_1px_Bottom_Dark}"
+                                Visibility="{Binding TitleVisibility}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -113,7 +114,8 @@
                             </Border>
 
                             <!-- Website -->
-                            <Border>
+                            <Border
+                                Visibility="{Binding WebsiteVisibility}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -185,7 +187,8 @@
 
                             <!-- Username -->
                             <Border
-                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                Style="{StaticResource Border_1px_Bottom_Dark}"
+                                Visibility="{Binding UsernameVisibility}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -233,7 +236,8 @@
 
                             <!-- Email -->
                             <Border
-                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                Style="{StaticResource Border_1px_Bottom_Dark}"
+                                Visibility="{Binding EmailVisibility}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -280,7 +284,8 @@
                             </Border>
 
                             <!-- Password -->
-                            <Border>
+                            <Border
+                                Visibility="{Binding PasswordVisibility}">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="8"/>
@@ -347,12 +352,14 @@
                     <TextBlock
                         Margin="0 0 0 8"
                         FontSize="{StaticResource FontSize.Normal}"
+                        Visibility="{Binding NoteVisibility}"
                         Text="Notes"/>
 
                     <TextBlock
                         Background="{StaticResource surface_elevation_1}"
                         Padding="8"
                         FontSize="{StaticResource FontSize.Normal}"
+                        Visibility="{Binding NoteVisibility}"
                         Text="{Binding Login.Note}"/>
                     
                     <!-- Timestamps -->
