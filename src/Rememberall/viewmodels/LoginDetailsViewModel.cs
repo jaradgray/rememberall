@@ -67,6 +67,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Title) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -74,6 +75,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Website) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -81,6 +83,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Username) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -88,6 +91,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Email) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -95,6 +99,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Password) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -102,7 +107,29 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Note) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Gets Login.Password or corresponding bullet points depending on IsPasswordObscured.
+        /// </summary>
+        public string DisplayedPasswordText
+        {
+            get
+            {
+                if (Login == null || String.IsNullOrEmpty(Login.Password)) return "";
+                if (IsPasswordObscured)
+                {
+                    string obscuredPassword = "";
+                    foreach (char c in Login.Password)
+                    {
+                        obscuredPassword += "\u2022";
+                    }
+                    return obscuredPassword;
+                }
+                return Login.Password;
             }
         }
 
@@ -116,19 +143,22 @@ namespace Rememberall
                 _login = value;
                 OnPropertyChanged();
 
-                // Refresh properties dependent on Login
-                if (_login == null) return;
+                // Refresh readonly properties dependent on Login
                 OnPropertyChanged(nameof(TitleVisibility));
                 OnPropertyChanged(nameof(WebsiteVisibility));
                 OnPropertyChanged(nameof(UsernameVisibility));
                 OnPropertyChanged(nameof(EmailVisibility));
                 OnPropertyChanged(nameof(PasswordVisibility));
                 OnPropertyChanged(nameof(NoteVisibility));
+
+                OnPropertyChanged(nameof(DisplayedPasswordText));
             }
         }
 
-        // is it readonly or full?
-        public Path TogglePasswordIconPath
+        /// <summary>
+        /// Gets the resource of the icon for the "toggle password visibility" button based on IsPasswordObscured
+        /// </summary>
+        public Path IconPath_TogglePasswordButton
         {
             get
             {
@@ -138,15 +168,17 @@ namespace Rememberall
         }
 
         private bool _isPasswordObscured;
-        public bool IsPasswordObscured
+        private bool IsPasswordObscured
         {
             get { return _isPasswordObscured; }
-            private set
+            set
             {
                 _isPasswordObscured = value;
+                // Note: no need to call OnPropertyChagned() because nothing is bound directly to this property
 
-                // TODO refresh readonly properties dependent on IsPasswordObscured
-                OnPropertyChanged(nameof(TogglePasswordIconPath));
+                // Refresh readonly properties dependent on IsPasswordObscured
+                OnPropertyChanged(nameof(IconPath_TogglePasswordButton));
+                OnPropertyChanged(nameof(DisplayedPasswordText));
 
                 // TODO persist value in Settings
             }
