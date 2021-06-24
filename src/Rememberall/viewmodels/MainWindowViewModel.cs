@@ -272,7 +272,12 @@ namespace Rememberall
         private void DeleteSelectedLogin()
         {
             // Prompt user for confirmation
-            var prompt = new YesNoDialog();
+            var prompt = new YesNoDialog()
+            {
+                Message = $"Delete all data for {(string.IsNullOrEmpty(SelectedLogin.TitleOrWebsite) ? "login" : SelectedLogin.TitleOrWebsite)}?",
+                AffirmativeText = "Delete",
+                NegativeText = "Cancel"
+            };
             prompt.Owner = App.Current.MainWindow;
             if (prompt.ShowDialog() != true) return;
 

@@ -19,9 +19,15 @@ namespace Rememberall
     /// </summary>
     public partial class YesNoDialog : Window
     {
+        public string Message { get; set; }
+        public string AffirmativeText { get; set; }
+        public string NegativeText { get; set; }
+
         public YesNoDialog()
         {
             InitializeComponent();
+
+            DataContext = this;
         }
 
         private void Button_Affirmative_Click(object sender, RoutedEventArgs e)

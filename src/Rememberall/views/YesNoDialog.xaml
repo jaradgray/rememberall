@@ -10,7 +10,9 @@
         MinWidth="300"
         MinHeight="100"
         Background="{DynamicResource window_background}"
-        WindowStartupLocation="CenterOwner">
+        WindowStartupLocation="CenterOwner"
+        WindowStyle="None"
+        ResizeMode="NoResize">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8"/>
@@ -34,7 +36,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             Margin="8 32"
-            Text="Hi"/>
+            Text="{Binding Message}"/>
 
         <StackPanel
             Grid.Column="1"
@@ -45,12 +47,12 @@
                 x:Name="Button_Affirmative"
                 Style="{StaticResource Button.HighEmphasis}"
                 Margin="0 0 8 0"
-                Content="Yes"
+                Content="{Binding AffirmativeText}"
                 Click="Button_Affirmative_Click"/>
             <Button
                 x:Name="Button_Negative"
                 Style="{StaticResource Button}"
-                Content="No"
+                Content="{Binding NegativeText}"
                 Click="Button_Negative_Click"/>
         </StackPanel>
     </Grid>
