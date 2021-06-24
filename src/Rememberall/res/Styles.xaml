@@ -437,4 +437,13 @@
         </Style.Triggers>
     </Style>
     
+    
+    <!-- ListView -->
+    <Style
+        TargetType="{x:Type ListView}"
+        BasedOn="{StaticResource {x:Type ListBox}}">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="BorderBrush" Value="Transparent"/>
+    </Style>
+    
 </ResourceDictionary>

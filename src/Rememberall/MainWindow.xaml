@@ -32,7 +32,6 @@
             Background="{StaticResource surface_elevation_4dp}">
             <ListView
                 x:Name="ListView_Folders"
-                Background="Transparent"
                 ItemTemplate="{StaticResource FolderItemTemplate}"
                 SelectedItem="{Binding SelectedFolder}"/>
         </Grid>
@@ -108,7 +107,6 @@
 
             <ListView
                 Grid.Row="2"
-                Background="Transparent"
                 ItemTemplate="{StaticResource LoginItemTemplate}"
                 ItemsSource="{Binding DisplayedLogins}"
                 SelectedItem="{Binding SelectedLogin}">
