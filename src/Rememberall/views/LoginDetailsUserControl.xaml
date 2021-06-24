@@ -313,7 +313,7 @@
                                         Grid.Row="2"
                                         Foreground="{StaticResource foreground_highEmphasis}"
                                         FontSize="{StaticResource FontSize.Normal}"
-                                        Text="{Binding Login.Password}"/>
+                                        Text="{Binding DisplayedPasswordText}"/>
 
                                     <!-- Toggle password visibility button -->
                                     <Button
@@ -326,7 +326,7 @@
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"
-                                            Content="{StaticResource ic_hide_password}"/>
+                                            Content="{Binding IconPath_TogglePasswordButton}"/>
                                     </Button>
 
                                     <!-- Copy button -->

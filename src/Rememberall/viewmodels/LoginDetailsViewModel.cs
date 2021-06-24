@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using System.Windows.Shapes;
 
 namespace Rememberall
 {
@@ -50,7 +51,7 @@ namespace Rememberall
                 if (_toggleObscurePasswordCommand == null)
                 {
                     _toggleObscurePasswordCommand = new RelayCommand(
-                        param => ToggleObscurePassword(),
+                        param => IsPasswordObscured = !IsPasswordObscured,
                         param => true);
                 }
                 return _toggleObscurePasswordCommand;
@@ -66,6 +67,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Title) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -73,6 +75,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Website) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -80,6 +83,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Username) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -87,6 +91,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Email) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -94,6 +99,7 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Password) ? Visibility.Collapsed : Visibility.Visible;
             }
         }
@@ -101,7 +107,29 @@ namespace Rememberall
         {
             get
             {
+                if (Login == null) return Visibility.Visible;
                 return String.IsNullOrEmpty(_login.Note) ? Visibility.Collapsed : Visibility.Visible;
+            }
+        }
+
+        /// <summary>
+        /// Gets Login.Password or corresponding bullet points depending on IsPasswordObscured.
+        /// </summary>
+        public string DisplayedPasswordText
+        {
+            get
+            {
+                if (Login == null || String.IsNullOrEmpty(Login.Password)) return "";
+                if (IsPasswordObscured)
+                {
+                    string obscuredPassword = "";
+                    foreach (char c in Login.Password)
+                    {
+                        obscuredPassword += "\u2022";
+                    }
+                    return obscuredPassword;
+                }
+                return Login.Password;
             }
         }
 
@@ -115,18 +143,58 @@ namespace Rememberall
                 _login = value;
                 OnPropertyChanged();
 
-                // Refresh properties dependent on Login
-                if (_login == null) return;
+                // Refresh readonly properties dependent on Login
                 OnPropertyChanged(nameof(TitleVisibility));
                 OnPropertyChanged(nameof(WebsiteVisibility));
                 OnPropertyChanged(nameof(UsernameVisibility));
                 OnPropertyChanged(nameof(EmailVisibility));
                 OnPropertyChanged(nameof(PasswordVisibility));
                 OnPropertyChanged(nameof(NoteVisibility));
+
+                OnPropertyChanged(nameof(DisplayedPasswordText));
+            }
+        }
+
+        /// <summary>
+        /// Gets the resource of the icon for the "toggle password visibility" button based on IsPasswordObscured
+        /// </summary>
+        public Path IconPath_TogglePasswordButton
+        {
+            get
+            {
+                string key = IsPasswordObscured ? "ic_show_password" : "ic_hide_password";
+                return (Path)App.Current.FindResource(key);
+            }
+        }
+
+        private bool _isPasswordObscured;
+        private bool IsPasswordObscured
+        {
+            get { return _isPasswordObscured; }
+            set
+            {
+                _isPasswordObscured = value;
+                // Note: no need to call OnPropertyChagned() because nothing is bound directly to this property
+
+                // Refresh readonly properties dependent on IsPasswordObscured
+                OnPropertyChanged(nameof(IconPath_TogglePasswordButton));
+                OnPropertyChanged(nameof(DisplayedPasswordText));
+
+                // TODO persist value in Settings
             }
         }
 
         #endregion // Properties
+
+
+        #region Constructor
+
+        public LoginDetailsViewModel()
+        {
+            IsPasswordObscured = false; // TODO initialize from persisted Settings
+        }
+
+        #endregion // Constructor
 
 
         #region Private methods
@@ -141,11 +209,6 @@ namespace Rememberall
             url = url.Trim();
             if (!url.StartsWith("http://") && !url.StartsWith("https://")) url = "http://" + url;
             System.Diagnostics.Process.Start(url);
-        }
-
-        private void ToggleObscurePassword()
-        {
-            Console.WriteLine("TODO toggle obscure password");
         }
 
         #endregion // Private methods
