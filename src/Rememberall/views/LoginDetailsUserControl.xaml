@@ -16,7 +16,8 @@
         </Grid.RowDefinitions>
         
         <!-- Scrollable main content -->
-        <ScrollViewer>
+        <ScrollViewer
+            VerticalScrollBarVisibility="Auto">
             <!-- Grid for outer margins -->
             <Grid>
                 <Grid.ColumnDefinitions>
