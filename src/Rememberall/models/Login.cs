@@ -38,6 +38,22 @@ namespace Rememberall
             }
         }
 
+        public string DateCreatedString
+        {
+            get
+            {
+                return new DateTime(TicksCreated).ToString();
+            }
+        }
+
+        public string DateModifiedString
+        {
+            get
+            {
+                return new DateTime(TicksModified).ToString();
+            }
+        }
+
         public Login()
         {
             FolderName = BLANK_FOLDER_NAME;

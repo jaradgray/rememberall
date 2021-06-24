@@ -30,7 +30,7 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 Foreground="{StaticResource foreground_highEmphasis}"
-                FontSize="16"
+                FontSize="{StaticResource FontSize.Normal}"
                 VerticalAlignment="Center"
                 Text="{Binding Path=Name}"/>
         </Grid>
@@ -61,14 +61,14 @@
                 Grid.Row="1"
                 Grid.Column="2"
                 Foreground="{StaticResource foreground_highEmphasis}"
-                FontSize="16"
+                FontSize="{StaticResource FontSize.Normal}"
                 Text="{Binding TitleOrWebsite}"/>
 
             <TextBlock
                 Grid.Row="2"
                 Grid.Column="2"
                 Foreground="{StaticResource foreground_mediumEmphasis}"
-                FontSize="12"
+                FontSize="{StaticResource FontSize.Small}"
                 Text="{Binding UsernameOrEmail}"/>
         </Grid>
     </DataTemplate>

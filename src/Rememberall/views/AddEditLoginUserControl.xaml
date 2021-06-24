@@ -6,161 +6,292 @@
              xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
              d:DesignHeight="500"
-             d:DesignWidth="400">
+             d:DesignWidth="400"
+             Foreground="{StaticResource foreground_mediumEmphasis}">
     
-    <Grid
-        Background="LightCoral">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="8"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="8"/>
-        </Grid.ColumnDefinitions>
-
+    <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="8"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="8"/>
             <RowDefinition Height="auto"/>
         </Grid.RowDefinitions>
 
-        <!-- This is just a dummy layout to verify binding -->
-        <ScrollViewer
-            Grid.Column="1"
-            Grid.Row="1">
-            <StackPanel
-                Orientation="Vertical"
-                HorizontalAlignment="Center">
+        <!-- Scrollable main content -->
+        <ScrollViewer>
+            <!-- Grid for outer margins -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
 
-                <TextBlock
-                    FontSize="24"
-                    HorizontalAlignment="Center"
-                    Margin="0 0 0 16"
-                    Text="Add/Edit Login UserControl"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="8"/>
+                </Grid.RowDefinitions>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Folder"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.FolderName}"/>
+                <!-- Arrange main content in a stack -->
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1">
 
-                <CheckBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    IsChecked="{Binding Login.IsFavorite}">
-                    IsFavorite
-                </CheckBox>
+                    <!-- Login Information section -->
+                    <TextBlock
+                        Margin="0 0 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="{Binding Heading}"/>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="FaviconPath"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.FaviconPath}"/>
+                    <!-- Folder, Title, Website "card" -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}"
+                        Margin="0 0 0 16">
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Title"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Title}"/>
+                        <StackPanel>
+                            <!-- Folder -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Website"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Website}"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Email"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Email}"/>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Folder"/>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Username"/>
-                <TextBox
-                    FontSize="16"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Username}"/>
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.FolderName}"/>
+                                </Grid>
+                            </Border>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Password"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Password}"/>
+                            <!-- Title -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="Note"/>
-                <TextBox
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.Note}"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="TicksCreated"/>
-                <TextBlock
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.TicksCreated}"/>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Title"/>
 
-                <TextBlock
-                    FontSize="16"
-                    Text="TicksModified"/>
-                <TextBlock
-                    FontSize="16"
-                    Margin="0 0 0 8"
-                    FontWeight="Bold"
-                    Text="{Binding Login.TicksModified}"/>
-            </StackPanel>
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.Title}"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Website -->
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Website"/>
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.Website}"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Username, Email, Password "card" -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}"
+                        Margin="0 0 0 16">
+                        <StackPanel>
+
+                            <!-- Username -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Username"/>
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.Username}"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Email -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Email"/>
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.Email}"/>
+                                </Grid>
+                            </Border>
+
+                            <!-- Password -->
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Password"/>
+
+                                    <TextBox
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Text="{Binding Login.Password}"/>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Notes section -->
+                    <TextBlock
+                        Margin="0 0 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="Notes"/>
+
+                    <Border
+                        Background="{StaticResource surface_elevation_1}"
+                        Padding="8">
+                        <TextBox
+                            Text="{Binding Login.Note}"
+                            TextWrapping="Wrap"
+                            AcceptsReturn="True"/>
+                    </Border>
+
+                </StackPanel>
+            </Grid>
         </ScrollViewer>
-        
-        <!-- Bottom buttons -->
-        <Grid
-            Grid.Row="3"
-            Grid.ColumnSpan="3">
-            <StackPanel
-                Orientation="Horizontal"
-                HorizontalAlignment="Left">
-                <Button
-                    Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
-                    CommandParameter="{Binding Login}">
-                    <!-- TODO set content to icon instead of text -->
-                    Save
-                </Button>
-                <Button
-                    Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                    <!-- TODO set content to icon instead of text -->
-                    Cancel
-                </Button>
-            </StackPanel>
 
-            <Button
-                HorizontalAlignment="Right"
-                Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                <!-- TODO set content to icon instead of text -->
-                Delete
-            </Button>
-        </Grid>
+        <!-- Bottom buttons -->
+        <Border
+            Grid.Row="3"
+            Grid.ColumnSpan="3"
+            Padding="8 4"
+            Background="{StaticResource surface_elevation_4dp}">
+            <Grid>
+                <StackPanel
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Left">
+                    <Button
+                        Style="{StaticResource Button}"
+                        Command="{Binding DataContext.SaveLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}"
+                        CommandParameter="{Binding Login}">
+                        <ContentPresenter
+                            Width="16"
+                            Height="16"
+                            Content="{StaticResource ic_save}"/>
+                    </Button>
+                    <Button
+                        Style="{StaticResource Button}"
+                        Command="{Binding DataContext.CancelAddEditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                        <!-- TODO set content to icon instead of text -->
+                        Cancel
+                    </Button>
+                </StackPanel>
+
+                <Button
+                    Style="{StaticResource Button}"
+                    HorizontalAlignment="Right"
+                    Command="{Binding DataContext.DeleteSelectedLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
+                    <ContentPresenter
+                        Width="16"
+                        Height="16"
+                        Content="{StaticResource ic_delete}"/>
+                </Button>
+            </Grid>
+        </Border>
     </Grid>
 </UserControl>

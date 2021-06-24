@@ -9,14 +9,108 @@
     <Color x:Key="white_60">#99FFFFFF</Color>
     <Color x:Key="white_38">#60FFFFFF</Color>
     
+    <Color x:Key="surface_overlay_1dp">#0cFFFFFF</Color>
+    <Color x:Key="surface_overlay_2dp">#11FFFFFF</Color>
+    <Color x:Key="surface_overlay_4dp">#16FFFFFF</Color>
+    <Color x:Key="surface_overlay_8dp">#1eFFFFFF</Color>
+    <Color x:Key="surface_overlay_16dp">#26FFFFFF</Color>
+    <Color x:Key="surface_overlay_24dp">#28FFFFFF</Color>
+
+    <Color x:Key="color_surface_elevation_1dp">#1d1d1d</Color>
+    <Color x:Key="color_surface_elevation_2dp">#212121</Color>
+    <Color x:Key="color_surface_elevation_4dp">#272727</Color>
+    <Color x:Key="color_surface_elevation_8dp">#2d2d2d</Color>
+    <Color x:Key="color_surface_elevation_16dp">#353535</Color>
+    <Color x:Key="color_surface_elevation_24dp">#373737</Color>
+
     <!-- Brushes -->
 
     <SolidColorBrush x:Key="window_background" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="surface_elevation_1" Color="{StaticResource color_surface_elevation_1dp}"/>
+    <SolidColorBrush x:Key="surface_elevation_4dp" Color="{StaticResource color_surface_elevation_4dp}"/>
     
     <SolidColorBrush x:Key="foreground_highEmphasis" Color="{StaticResource white_87}"/>
     <SolidColorBrush x:Key="foreground_mediumEmphasis" Color="{StaticResource white_60}"/>
     <SolidColorBrush x:Key="foreground_disabled" Color="{StaticResource white_38}"/>
     
+    <SolidColorBrush x:Key="foreground_blue" Color="#2394fd"/>
+    <SolidColorBrush x:Key="foreground_red" Color="#cf6679"/>
+    
     <SolidColorBrush x:Key="line_dark" Color="{StaticResource black_30}"/>
+    
+    <!-- Button -->
+    <SolidColorBrush x:Key="Button.Static.Background" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="Button.Static.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
+    <SolidColorBrush x:Key="Button.Static.Border" Color="{StaticResource darkest}"/>
+
+    <SolidColorBrush x:Key="Button.MouseOver.Overlay" Color="{StaticResource surface_overlay_16dp}"/>
+    <SolidColorBrush x:Key="Button.MouseOver.Border" Color="{StaticResource darkest}"/>
+
+    <SolidColorBrush x:Key="Button.Pressed.Overlay" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="Button.Pressed.Border" Color="{StaticResource darkest}"/>
+
+    <SolidColorBrush x:Key="Button.Disabled.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
+    <SolidColorBrush x:Key="Button.Disabled.Border" Color="{StaticResource darkest}"/>
+
+    <!-- Button.Borderless -->
+    <SolidColorBrush x:Key="Button.Borderless.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Borderless.Static.Overlay" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Borderless.MouseOver.Overlay" Color="{StaticResource surface_overlay_4dp}"/>
+    <SolidColorBrush x:Key="Button.Borderless.Pressed.Overlay" Color="{StaticResource surface_overlay_8dp}"/>
+    <SolidColorBrush x:Key="Button.Borderless.Disabled.Overlay" Color="Transparent"/>
+    
+    <!-- TextBox -->
+    <SolidColorBrush x:Key="TextBox.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Static.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="TextBox.MouseOver.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.MouseOver.Border" Color="{StaticResource white_38}"/>
+
+    <SolidColorBrush x:Key="TextBox.Focus.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Focus.Border" Color="{StaticResource white_60}"/>
+
+    <!-- TextBox.Dark -->
+    <SolidColorBrush x:Key="TextBox.Dark.Static.Background" Color="{StaticResource darkest}"/>
+    <SolidColorBrush x:Key="TextBox.Dark.Static.Border" Color="Transparent"/>
+    <SolidColorBrush x:Key="TextBox.Dark.MouseOver.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="TextBox.Dark.Focus.Border" Color="{StaticResource white_60}"/>
+    
+    
+    <!-- ComboBox -->
+    <SolidColorBrush x:Key="ComboBox.Foreground" Color="{StaticResource white_87}"/>
+
+    <SolidColorBrush x:Key="ComboBox.Static.Glyph" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Static.Editable.Button.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Glyph" Color="White"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Background" Color="{StaticResource surface_overlay_4dp}"/>
+    <SolidColorBrush x:Key="ComboBox.MouseOver.Editable.Button.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="ComboBox.Pressed.Glyph" Color="White"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Background" Color="{StaticResource surface_overlay_2dp}"/>
+    <SolidColorBrush x:Key="ComboBox.Pressed.Editable.Button.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="ComboBox.Disabled.Glyph" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Border" Color="{StaticResource white_38}"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
+
+    <SolidColorBrush x:Key="ComboBox.Dropdown.Background" Color="{StaticResource color_surface_elevation_1dp}"/>
 
 </ResourceDictionary>

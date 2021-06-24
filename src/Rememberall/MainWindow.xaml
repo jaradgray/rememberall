@@ -6,8 +6,9 @@
         xmlns:local="clr-namespace:Rememberall"
         mc:Ignorable="d"
         Title="Rememberall"
-        Height="450"
-        Width="800"
+        Height="700"
+        Width="1300"
+        WindowStartupLocation="CenterScreen"
         Background="{DynamicResource window_background}">
     <Window.Resources>
         <ResourceDictionary>
@@ -27,17 +28,18 @@
         
         <!-- Folders list -->
         <Grid
-            Grid.Column="0">
+            Grid.Column="0"
+            Background="{StaticResource surface_elevation_4dp}">
             <ListView
                 x:Name="ListView_Folders"
-                Background="Transparent"
                 ItemTemplate="{StaticResource FolderItemTemplate}"
                 SelectedItem="{Binding SelectedFolder}"/>
         </Grid>
 
         <!-- Items list -->
         <Grid
-            Grid.Column="1">
+            Grid.Column="1"
+            Background="{StaticResource surface_elevation_4dp}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto"/>
                 <RowDefinition Height="auto"/>
@@ -70,36 +72,60 @@
                 <TextBox
                     Grid.Row="1"
                     Grid.Column="2"
-                    FontSize="16"
+                    Style="{StaticResource TextBox.Dark}"
                     Text="{Binding FilterText, UpdateSourceTrigger=PropertyChanged}"/>
             </Grid>
             
             <!-- Sort control -->
-            <ComboBox
-                Grid.Row="1"
-                FontSize="12"
-                SelectedIndex="{Binding SelectedSortModeIndex}">
-                <ComboBoxItem Content="Alphabetical"/>
-                <ComboBoxItem Content="Date created (oldest)"/>
-                <ComboBoxItem Content="Date created (newest)"/>
-                <ComboBoxItem Content="Date modified (oldest)"/>
-                <ComboBoxItem Content="Date modified (newest)"/>
-            </ComboBox>
+            <!-- TODO delete the StackPanel and just have 1 ComboBox -->
+            <StackPanel Grid.Row="1">
+                <ComboBox
+                    Grid.Row="1"
+                    Style="{StaticResource ComboBox}"
+                    SelectedIndex="{Binding SelectedSortModeIndex}">
+                        <ComboBoxItem Content="Alphabetical"/>
+                        <ComboBoxItem Content="Date created (oldest)"/>
+                        <ComboBoxItem Content="Date created (newest)"/>
+                        <ComboBoxItem Content="Date modified (oldest)"/>
+                        <ComboBoxItem Content="Date modified (newest)"/>
+                </ComboBox>
+
+                <!-- TODO delete this editable ComboBox -->
+                <ComboBox
+                    Grid.Row="1"
+                    Style="{StaticResource ComboBox}"
+                    IsEditable="True"
+                    Margin="0 8 0 0"
+                    SelectedIndex="{Binding SelectedSortModeIndex}">
+                        <ComboBoxItem Content="Alphabetical"/>
+                        <ComboBoxItem Content="Date created (oldest)"/>
+                        <ComboBoxItem Content="Date created (newest)"/>
+                        <ComboBoxItem Content="Date modified (oldest)"/>
+                        <ComboBoxItem Content="Date modified (newest)"/>
+                </ComboBox>
+            </StackPanel>
 
             <ListView
                 Grid.Row="2"
-                Background="Transparent"
                 ItemTemplate="{StaticResource LoginItemTemplate}"
                 ItemsSource="{Binding DisplayedLogins}"
                 SelectedItem="{Binding SelectedLogin}">
             </ListView>
 
-            <Button
+            <!-- Add button area -->
+            <Border
                 Grid.Row="3"
-                Command="{Binding AddLoginCommand}">
-                <!-- TODO use icon instead of text -->
-                Add
-            </Button>
+                Padding="8 4"
+                Background="{StaticResource surface_elevation_4dp}">
+                <Button
+                    Style="{StaticResource Button}"
+                    Command="{Binding AddLoginCommand}">
+                        <ContentPresenter
+                        Width="16"
+                        Height="16"
+                        Content="{StaticResource ic_add}"/>
+                </Button>
+            </Border>
         </Grid>
         
         <!-- Item details -->

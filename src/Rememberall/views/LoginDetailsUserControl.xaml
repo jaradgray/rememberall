@@ -7,122 +7,392 @@
              mc:Ignorable="d" 
              d:DesignWidth="450" d:DesignHeight="600"
              Foreground="{DynamicResource foreground_mediumEmphasis}">
-    
-    <ScrollViewer>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="8"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="8"/>
-            </Grid.ColumnDefinitions>
-            
-            <Grid.RowDefinitions>
-                <RowDefinition Height="8"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="8"/>
-                <RowDefinition Height="auto"/>
-            </Grid.RowDefinitions>
 
-            <StackPanel
-                Grid.Row="1"
-                Grid.Column="1">
+    <!-- Grid separating scrollable main content area and bottom buttons -->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
+        
+        <!-- Scrollable main content -->
+        <ScrollViewer>
+            <!-- Grid for outer margins -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
 
-                <!-- Item Information section -->
-                <TextBlock
-                    FontSize="16"
-                    Text="Login Information"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="8"/>
+                </Grid.RowDefinitions>
 
-                <Border
-                    Background="#333333">
-                    <StackPanel>
+                <!-- Arrange main content in a stack -->
+                <StackPanel
+                    Grid.Row="1"
+                    Grid.Column="1">
 
-                        <!-- TODO add folder details here -->
+                    <!-- Login Information section -->
+                    <TextBlock
+                        Margin="0 0 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="Login Information"/>
 
-                        <!-- Title -->
-                        <Border
-                            Style="{StaticResource Border_1px_Bottom_Dark}">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="8"/>
-                                </Grid.ColumnDefinitions>
+                    <!-- Folder, Title, Website "card" -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}"
+                        Margin="0 0 0 16">
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="8"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="8"/>
-                                </Grid.RowDefinitions>
-                                
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Text="Title"/>
-                                
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Grid.Row="2"
-                                    Foreground="{StaticResource foreground_highEmphasis}"
-                                    FontSize="16"
-                                    Text="{Binding Login.Title}"/>
-                            </Grid>
-                        </Border>
+                        <StackPanel>
+                            <!-- Folder -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
 
-                        <!-- Website -->
-                        <Border>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="8"/>
-                                    <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="auto"/>
-                                    <ColumnDefinition Width="8"/>
-                                </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="8"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="auto"/>
-                                    <RowDefinition Height="8"/>
-                                </Grid.RowDefinitions>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Folder"/>
 
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Grid.Row="1"
-                                    Text="Website"/>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.FolderName}"/>
+                                </Grid>
+                            </Border>
 
-                                <TextBlock
-                                    Grid.Column="1"
-                                    Grid.Row="2"
-                                    Foreground="{StaticResource foreground_highEmphasis}"
-                                    FontSize="16"
-                                    Text="{Binding Login.Website}"/>
-                                
-                                <!-- TODO add navigate button -->
-                                
-                                <!-- TODO add copy button -->
-                            </Grid>
-                        </Border>
+                            <!-- Title -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
 
-                    </StackPanel>
-                </Border>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
 
-                <!-- Notes section -->
-                <TextBlock
-                    FontSize="16"
-                    Text="Notes"/>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Title"/>
 
-            </StackPanel>
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.Title}"/>
+                                </Grid>
+                            </Border>
 
+                            <!-- Website -->
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Website"/>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.Website}"/>
+
+                                    <!-- Navigate button -->
+                                    <Button
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Open website"
+                                        Command="{Binding OpenUrlCommand}"
+                                        CommandParameter="{Binding Login.Website}">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_open_website}"/>
+                                    </Button>
+
+                                    <!-- Copy button -->
+                                    <Button
+                                        Grid.Column="3"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Website}">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_copy}"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Username, Email, Password "card" -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}"
+                        Margin="0 0 0 16">
+                        <StackPanel>
+
+                            <!-- Username -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Username"/>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.Username}"/>
+
+                                    <!-- Copy button -->
+                                    <Button
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Username}">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_copy}"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+
+                            <!-- Email -->
+                            <Border
+                                Style="{StaticResource Border_1px_Bottom_Dark}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Email"/>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.Email}"/>
+
+                                    <!-- Copy button -->
+                                    <Button
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Email}">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_copy}"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+
+                            <!-- Password -->
+                            <Border>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="8"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="auto"/>
+                                        <ColumnDefinition Width="8"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="8"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="auto"/>
+                                        <RowDefinition Height="8"/>
+                                    </Grid.RowDefinitions>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="1"
+                                        FontSize="{StaticResource FontSize.Small}"
+                                        Text="Password"/>
+
+                                    <TextBlock
+                                        Grid.Column="1"
+                                        Grid.Row="2"
+                                        Foreground="{StaticResource foreground_highEmphasis}"
+                                        FontSize="{StaticResource FontSize.Normal}"
+                                        Text="{Binding Login.Password}"/>
+
+                                    <!-- Toggle password visibility button -->
+                                    <Button
+                                        Grid.Column="2"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Toggle visibility"
+                                        Visibility="Collapsed">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_hide_password}"/>
+                                    </Button>
+
+                                    <!-- Copy button -->
+                                    <Button
+                                        Grid.Column="3"
+                                        Grid.Row="1"
+                                        Grid.RowSpan="2"
+                                        Style="{StaticResource Button.Borderless}"
+                                        ToolTip="Copy"
+                                        Command="{Binding CopyCommand}"
+                                        CommandParameter="{Binding Login.Password}">
+                                        <ContentPresenter
+                                            Width="16"
+                                            Height="16"
+                                            Content="{StaticResource ic_copy}"/>
+                                    </Button>
+                                </Grid>
+                            </Border>
+                        </StackPanel>
+                    </Border>
+
+                    <!-- Notes section -->
+                    <TextBlock
+                        Margin="0 0 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="Notes"/>
+
+                    <TextBlock
+                        Background="{StaticResource surface_elevation_1}"
+                        Padding="8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="{Binding Login.Note}"/>
+                    
+                    <!-- Timestamps -->
+                    <TextBlock
+                        Margin="0 16 0 8"
+                        Foreground="{StaticResource foreground_disabled}"
+                        FontSize="{StaticResource FontSize.Small}">
+                        <TextBlock.Inlines>
+                            <Run FontWeight="Bold" Text="Created: "/>
+                            <Run Text="{Binding Login.DateCreatedString, Mode=OneWay}"/>
+                        </TextBlock.Inlines>
+                    </TextBlock>
+
+                    <TextBlock
+                        Foreground="{StaticResource foreground_disabled}"
+                        FontSize="{StaticResource FontSize.Small}">
+                        <TextBlock.Inlines>
+                            <Run FontWeight="Bold" Text="Updated: "/>
+                            <Run Text="{Binding Login.DateModifiedString, Mode=OneWay}"/>
+                        </TextBlock.Inlines>
+                    </TextBlock>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+        <!-- Edit button -->
+        <Border
+            Grid.Row="1"
+            Style="{StaticResource Border_1px_Dark}"
+            Padding="8 4"
+            Background="{StaticResource surface_elevation_4dp}">
             <Button
-                Grid.Column="1"
-                Grid.Row="3"
+                Style="{StaticResource Button}"
                 HorizontalAlignment="Left"
                 Command="{Binding DataContext.EditLoginCommand, RelativeSource={RelativeSource AncestorType={x:Type Window}}}">
-                <!-- TODO use icon instead of text -->
-                Edit
+                    <ContentPresenter
+                    Content="{StaticResource ic_edit}"/>
             </Button>
-        </Grid>
-    </ScrollViewer>
+        </Border>
+    </Grid>
+    
 </UserControl>
