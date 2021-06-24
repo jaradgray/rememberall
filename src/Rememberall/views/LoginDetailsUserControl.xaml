@@ -322,7 +322,7 @@
                                         Grid.RowSpan="2"
                                         Style="{StaticResource Button.Borderless}"
                                         ToolTip="Toggle visibility"
-                                        Visibility="Collapsed">
+                                        Command="{Binding ToggleObscurePasswordCommand}">
                                         <ContentPresenter
                                             Width="16"
                                             Height="16"

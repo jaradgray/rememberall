@@ -42,6 +42,21 @@ namespace Rememberall
             }
         }
 
+        private ICommand _toggleObscurePasswordCommand;
+        public ICommand ToggleObscurePasswordCommand
+        {
+            get
+            {
+                if (_toggleObscurePasswordCommand == null)
+                {
+                    _toggleObscurePasswordCommand = new RelayCommand(
+                        param => ToggleObscurePassword(),
+                        param => true);
+                }
+                return _toggleObscurePasswordCommand;
+            }
+        }
+
         #endregion // Commands
 
 
@@ -126,6 +141,11 @@ namespace Rememberall
             url = url.Trim();
             if (!url.StartsWith("http://") && !url.StartsWith("https://")) url = "http://" + url;
             System.Diagnostics.Process.Start(url);
+        }
+
+        private void ToggleObscurePassword()
+        {
+            Console.WriteLine("TODO toggle obscure password");
         }
 
         #endregion // Private methods
