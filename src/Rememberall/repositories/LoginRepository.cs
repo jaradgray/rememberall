@@ -48,12 +48,16 @@ namespace Rememberall
                 string sql = "DELETE FROM LoginTable WHERE TicksCreated = @TicksCreated";
                 connection.Execute(sql, login);
             }
+            // Database updated, back up the file
+            Util.BackupDatabaseFile();
         }
 
         public static void SaveLogin(Login login)
         {
             if (LoginExists(login)) UpdateLogin(login);
             else InsertLogin(login);
+            // Database updated, back up the file
+            Util.BackupDatabaseFile();
         }
 
         /// <summary>
