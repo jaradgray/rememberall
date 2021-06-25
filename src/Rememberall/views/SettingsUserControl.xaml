@@ -5,13 +5,98 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid
-        Background="LightBlue">
-        <TextBlock
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center"
-            FontSize="32"
-            Text="SettingsUserControl"/>
+             d:DesignWidth="450" d:DesignHeight="600"
+             Foreground="{DynamicResource foreground_mediumEmphasis}">
+    
+    <!-- Outer grid in case we add bottom buttons or something later -->
+    <Grid>
+        
+        <!-- Scrollable main content -->
+        <ScrollViewer
+            VerticalScrollBarVisibility="Auto">
+
+            <!-- Grid for outer margins -->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="8"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="8"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="8"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="8"/>
+                </Grid.RowDefinitions>
+
+                <!-- Arrange main content in a stack -->
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="1">
+
+                    <!-- Settings heading -->
+                    <TextBlock
+                        Margin="0 0 0 16"
+                        FontSize="32"
+                        Text="Settings"/>
+                    
+                    <!-- User data section -->
+                    <TextBlock
+                        Margin="0 0 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="User Data"/>
+
+                    <!-- Database location card -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}">
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="8"/>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition Width="8"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="8"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="auto"/>
+                                <RowDefinition Height="8"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- Database location -->
+                            <TextBlock
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                FontSize="{StaticResource FontSize.Small}"
+                                Text="Database location"/>
+
+                            <TextBlock
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                Foreground="{StaticResource foreground_highEmphasis}"
+                                FontSize="{StaticResource FontSize.Normal}"
+                                TextWrapping="Wrap"
+                                Text="{Binding DatabaseFolderPath}"/>
+                            
+                            <!-- Open folder button -->
+                            <Button
+                                Grid.Column="2"
+                                Grid.Row="1"
+                                Grid.RowSpan="2"
+                                Style="{StaticResource Button.Borderless}"
+                                ToolTip="Open folder"
+                                Command="{Binding OpenFolderCommand}"
+                                CommandParameter="{Binding DatabaseFolderPath}">
+                                <ContentPresenter
+                                    Width="16"
+                                    Height="16"
+                                    Content="{StaticResource ic_open_website}"/>
+                            </Button>
+                        </Grid>
+                    </Border>
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
     </Grid>
 </UserControl>
