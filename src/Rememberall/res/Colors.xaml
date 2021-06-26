@@ -121,5 +121,8 @@
     <SolidColorBrush x:Key="Button.Titlebar.Static.Background" Color="Transparent"/>
     <SolidColorBrush x:Key="Button.Titlebar.MouseOver.Background" Color="{StaticResource surface_overlay_4dp}"/>
     <SolidColorBrush x:Key="Button.Titlebar.Pressed.Background" Color="{StaticResource surface_overlay_2dp}"/>
+    
+    <!-- MainWindow -->
+    <SolidColorBrush x:Key="MainWindow.Border" Color="#333333"/>
 
 </ResourceDictionary>

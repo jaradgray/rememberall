@@ -494,101 +494,116 @@
 
     <!-- MainWindow - custom title bar -->
     <Style
+        x:Key="MainWindowBorder"
+        TargetType="{x:Type Border}">
+        <Setter Property="BorderBrush" Value="{StaticResource MainWindow.Border}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <!-- get rid of border when WindowState is Maximized -->
+        <Style.Triggers>
+            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=WindowState}" Value="Maximized">
+                <Setter Property="BorderThickness" Value="0"/>
+            </DataTrigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style
         TargetType="{x:Type root:MainWindow}">
         <Setter Property="WindowChrome.WindowChrome">
             <Setter.Value>
                 <WindowChrome CaptionHeight="32"
-                              ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}"/>
+                    ResizeBorderThickness="{x:Static SystemParameters.WindowResizeBorderThickness}" />
             </Setter.Value>
         </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type root:MainWindow}">
-                    <!-- Todo style window to make it look like standard -->
-                    <Grid Background="Purple">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="32"/>
-                            <RowDefinition Height="*"/>
-                        </Grid.RowDefinitions>
+                    <!-- Outer ("non-client") window border -->
+                    <Border Style="{StaticResource MainWindowBorder}">
+                        <Grid Background="Purple">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="32"/>
+                                <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
-                        <!-- Titlebar stuff -->
-                        <!-- app icon and window title -->
-                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                            <Border Background="Red">
-                                <!-- TODO set image source to app icon -->
-                                <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
+                            <!-- Titlebar stuff -->
+                            <!-- app icon and window title -->
+                            <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
+                                <Border Background="Red">
+                                    <!-- TODO set image source to app icon -->
+                                    <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
                                     Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(WindowChrome.WindowChrome).ResizeBorderThickness}"
                                     Width="{Binding Source={x:Static SystemParameters.SmallIconWidth}}"
                                     WindowChrome.IsHitTestVisibleInChrome="True"/>
-                            </Border>
+                                </Border>
 
-                            <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
+                                <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
                                        VerticalAlignment="Center"
                                        Margin="8 0 0 0"
                                 Foreground="White"/>
-                        </StackPanel>
+                            </StackPanel>
 
-                        <!-- window buttons -->
-                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                            <!-- minimize -->
-                            <Button
+                            <!-- window buttons -->
+                            <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
+                                <!-- minimize -->
+                                <Button
                                 x:Name="MinimizeButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Minimize">
-                                <Path
+                                    <Path
 			                        Width="46"
 			                        Height="32"
 			                        Data="M 18,15 H 28"
 			                        Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
 			                        StrokeThickness="1" />
-                            </Button>
+                                </Button>
 
-                            <!-- maximize -->
-                            <Button
+                                <!-- maximize -->
+                                <Button
                                 x:Name="MaximizeButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Maximize">
-                                <Path
+                                    <Path
 			                        Width="46"
 			                        Height="32"
 			                        Data="M 18.5,10.5 H 27.5 V 19.5 H 18.5 Z"
 			                        Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
 			                        StrokeThickness="1" />
-                            </Button>
+                                </Button>
 
-                            <!-- restore -->
-                            <Button
+                                <!-- restore -->
+                                <Button
                                 x:Name="RestoreButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Restore Down">
-                                <Path
+                                    <Path
 			                        Width="46"
 			                        Height="32"
 			                        Data="M 18.5,12.5 H 25.5 V 19.5 H 18.5 Z M 20.5,12.5 V 10.5 H 27.5 V 17.5 H 25.5"
 			                        Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
 			                        StrokeThickness="1" />
-                            </Button>
+                                </Button>
 
-                            <!-- close -->
-                            <Button
+                                <!-- close -->
+                                <Button
                                 x:Name="CloseButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Close">
-                                <Path
+                                    <Path
 			                        Width="46"
 			                        Height="32"
 			                        Data="M 18,11 27,20 M 18,20 27,11"
 			                        Stroke="{Binding Path=Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}"
 			                        StrokeThickness="1" />
-                            </Button>
-                        </StackPanel>
+                                </Button>
+                            </StackPanel>
 
-                        <!-- Main content -->
-                        <Border Grid.Row="1"
+                            <!-- Main content -->
+                            <Border Grid.Row="1"
                                 Background="Green">
-                            <ContentPresenter Content="{TemplateBinding Content}"/>
-                        </Border>
-                    </Grid>
+                                <ContentPresenter Content="{TemplateBinding Content}"/>
+                            </Border>
+                        </Grid>
+                    </Border>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

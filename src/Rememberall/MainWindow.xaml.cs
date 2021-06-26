@@ -101,7 +101,6 @@ namespace Rememberall
         /// <param name="e"></param>
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            Console.WriteLine($"WindowState changed to {WindowState}");
             this.RefreshMaximizeRestoreButton();
         }
 
