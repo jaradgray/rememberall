@@ -11,7 +11,7 @@ namespace Rememberall
     public static class Util
     {
         public const string USER_DATA_DIR_NAME = "data";
-        public const string DB_FILENAME = "data.db";
+        public const string DB_FILENAME = "dummy.db";
         public const string DB_BACKUP_FILENAME = "dummy_BACKUP.db";
 
         /// <summary>

@@ -255,7 +255,9 @@ namespace Rememberall
             if (!LoginRepository.LoginExists(login)) login.TicksCreated = now;
             login.TicksModified = now;
             // Set FaviconPath
-            if (!String.IsNullOrEmpty(login.Website)) login.FaviconPath = @"http://icons.duckduckgo.com/ip2/" + login.Website + ".ico";
+            login.FaviconPath = (String.IsNullOrEmpty(login.Website)) ?
+                @"pack://application:,,,/res/images/ic_favicon_default.png" :
+                @"http://icons.duckduckgo.com/ip2/" + login.Website + ".ico";
 
             LoginRepository.SaveLogin(login);
             // Refresh AllFolders from the database
