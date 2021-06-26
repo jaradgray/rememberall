@@ -126,4 +126,26 @@
     <SolidColorBrush x:Key="MainWindow.Border" Color="#333333"/>
     <SolidColorBrush x:Key="MainWindow.Titlebar" Color="#000000"/>
 
+
+    <!-- ScrollBar -->
+    <SolidColorBrush x:Key="ScrollBar.Static.Glyph" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="ScrollBar.Static.Background" Color="#171717"/>
+    <SolidColorBrush x:Key="ScrollBar.Static.Border" Color="#333333"/>
+
+    <SolidColorBrush x:Key="ScrollBar.MouseOver.Glyph" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="ScrollBar.MouseOver.Background" Color="#4d4d4d"/>
+    <SolidColorBrush x:Key="ScrollBar.MouseOver.Border" Color="#333333"/>
+
+    <SolidColorBrush x:Key="ScrollBar.Pressed.Glyph" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="ScrollBar.Pressed.Background" Color="#7a7a7a"/>
+    <SolidColorBrush x:Key="ScrollBar.Pressed.Border" Color="#333333"/>
+
+    <SolidColorBrush x:Key="ScrollBar.Disabled.Glyph" Color="{StaticResource white_87}"/>
+    <SolidColorBrush x:Key="ScrollBar.Disabled.Background" Color="#171717"/>
+    <SolidColorBrush x:Key="ScrollBar.Disabled.Border" Color="#333333"/>
+
+    <SolidColorBrush x:Key="ScrollBar.Static.Thumb" Color="#4d4d4d"/>
+    <SolidColorBrush x:Key="ScrollBar.MouseOver.Thumb" Color="#7a7a7a"/>
+    <SolidColorBrush x:Key="ScrollBar.Pressed.Thumb" Color="#a6a6a6"/>
+
 </ResourceDictionary>
