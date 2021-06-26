@@ -115,5 +115,15 @@
     <SolidColorBrush x:Key="ComboBox.Disabled.Editable.Button.Border" Color="Transparent"/>
 
     <SolidColorBrush x:Key="ComboBox.Dropdown.Background" Color="{StaticResource color_surface_elevation_1dp}"/>
+    
+    
+    <!-- Button.Titlebar -->
+    <SolidColorBrush x:Key="Button.Titlebar.Static.Background" Color="Transparent"/>
+    <SolidColorBrush x:Key="Button.Titlebar.MouseOver.Background" Color="{StaticResource surface_overlay_4dp}"/>
+    <SolidColorBrush x:Key="Button.Titlebar.Pressed.Background" Color="{StaticResource surface_overlay_2dp}"/>
+    
+    <!-- MainWindow -->
+    <SolidColorBrush x:Key="MainWindow.Border" Color="#333333"/>
+    <SolidColorBrush x:Key="MainWindow.Titlebar" Color="#000000"/>
 
 </ResourceDictionary>

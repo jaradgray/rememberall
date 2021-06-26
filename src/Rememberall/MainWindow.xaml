@@ -9,7 +9,9 @@
         Height="700"
         Width="1300"
         WindowStartupLocation="CenterScreen"
-        Background="{DynamicResource window_background}">
+        WindowStyle="None"
+        Background="{DynamicResource window_background}"
+        StateChanged="Window_StateChanged">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
