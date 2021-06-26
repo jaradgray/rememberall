@@ -248,12 +248,14 @@ namespace Rememberall
         private void SaveLogin(Login login)
         {
             // Do some final processing/validation of the Login before giving it to the database
-            // TODO should this be somewhere else?
+            // TODO should this final processing be done somewhere else?
             if (string.IsNullOrEmpty(login.FolderName)) login.FolderName = Login.BLANK_FOLDER_NAME;
             // TicksModified and (possibly) TicksCreated
             long now = DateTime.Now.Ticks;
             if (!LoginRepository.LoginExists(login)) login.TicksCreated = now;
             login.TicksModified = now;
+            // Set FaviconPath
+            if (!String.IsNullOrEmpty(login.Website)) login.FaviconPath = @"http://icons.duckduckgo.com/ip2/" + login.Website + ".ico";
 
             LoginRepository.SaveLogin(login);
             // Refresh AllFolders from the database
