@@ -124,7 +124,7 @@
     
     <!-- MainWindow -->
     <SolidColorBrush x:Key="MainWindow.Border" Color="#333333"/>
-    <SolidColorBrush x:Key="MainWindow.Titlebar" Color="#000000"/>
+    <SolidColorBrush x:Key="MainWindow.Titlebar" Color="{StaticResource darkest}"/>
 
 
     <!-- ScrollBar -->
