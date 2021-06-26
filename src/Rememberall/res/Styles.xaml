@@ -541,8 +541,21 @@
 
                                 <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
                                        VerticalAlignment="Center"
-                                       Margin="8 0 0 0"
-                                Foreground="White"/>
+                                       Margin="8 0 0 0">
+                                    <!-- Change foreground color based on MainWindow.IsActive, via Style -->
+                                    <TextBlock.Style>
+                                        <Style TargetType="{x:Type TextBlock}">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Path=IsActive, RelativeSource={RelativeSource TemplatedParent}}" Value="True">
+                                                    <Setter Property="Foreground" Value="{StaticResource foreground_highEmphasis}"/>
+                                                </DataTrigger>
+                                                <DataTrigger Binding="{Binding Path=IsActive, RelativeSource={RelativeSource TemplatedParent}}" Value="False">
+                                                    <Setter Property="Foreground" Value="{StaticResource foreground_disabled}"/>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
 
                             </StackPanel>
 
