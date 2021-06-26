@@ -532,6 +532,7 @@
                         <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
                             <!-- minimize -->
                             <Button
+                                x:Name="MinimizeButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Minimize">
                                 <Path
@@ -544,6 +545,7 @@
 
                             <!-- maximize -->
                             <Button
+                                x:Name="MaximizeButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Maximize">
                                 <Path
@@ -556,6 +558,7 @@
 
                             <!-- restore -->
                             <Button
+                                x:Name="RestoreButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Restore Down">
                                 <Path
@@ -568,6 +571,7 @@
 
                             <!-- close -->
                             <Button
+                                x:Name="CloseButton"
                                 Style="{StaticResource Button.Titlebar}"
                                 ToolTip="Close">
                                 <Path
