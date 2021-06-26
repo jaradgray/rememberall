@@ -492,20 +492,7 @@
     </Style>
 
 
-    <!-- MainWindow - custom title bar -->
-    <Style
-        x:Key="MainWindowBorder"
-        TargetType="{x:Type Border}">
-        <Setter Property="BorderBrush" Value="{StaticResource MainWindow.Border}"/>
-        <Setter Property="BorderThickness" Value="1"/>
-        <!-- get rid of border when WindowState is Maximized -->
-        <Style.Triggers>
-            <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=WindowState}" Value="Maximized">
-                <Setter Property="BorderThickness" Value="0"/>
-            </DataTrigger>
-        </Style.Triggers>
-    </Style>
-    
+    <!-- MainWindow - custom title bar -->    
     <Style
         TargetType="{x:Type root:MainWindow}">
         <Setter Property="WindowChrome.WindowChrome">
@@ -520,7 +507,19 @@
                 <ControlTemplate TargetType="{x:Type root:MainWindow}">
                     
                     <!-- Outer ("non-client") window border -->
-                    <Border Style="{StaticResource MainWindowBorder}">
+                    <Border>
+                        <Border.Style>
+                            <Style TargetType="{x:Type Border}">
+                                <Setter Property="BorderBrush" Value="{StaticResource MainWindow.Border}"/>
+                                <Setter Property="BorderThickness" Value="1"/>
+                                <!-- get rid of border when WindowState is Maximized -->
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=WindowState}" Value="Maximized">
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
                         
                         <!-- Grid with areas for our titlebar and main content -->
                         <Grid Background="{StaticResource MainWindow.Titlebar}">
@@ -544,6 +543,7 @@
                                        VerticalAlignment="Center"
                                        Margin="8 0 0 0"
                                 Foreground="White"/>
+
                             </StackPanel>
 
                             <!-- window buttons -->
