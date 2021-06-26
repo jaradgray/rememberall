@@ -525,7 +525,6 @@
                         <Grid Background="{StaticResource MainWindow.Titlebar}">
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="32"/>
-                                <RowDefinition Height="1"/>
                                 <RowDefinition Height="*"/>
                             </Grid.RowDefinitions>
 
@@ -614,12 +613,9 @@
 			                        StrokeThickness="1" />
                                 </Button>
                             </StackPanel>
-                            
-                            <!-- 1px divider -->
-                            <Border Grid.Row="1" Background="{StaticResource MainWindow.Border}"/>
 
                             <!-- Main content -->
-                            <Border Grid.Row="2"
+                            <Border Grid.Row="1"
                                     Background="{StaticResource window_background}">
                                 <ContentPresenter Content="{TemplateBinding Content}"/>
                             </Border>
