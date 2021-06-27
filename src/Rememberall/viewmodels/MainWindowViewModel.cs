@@ -21,7 +21,7 @@ namespace Rememberall
                 {
                     _addLoginCommand = new RelayCommand(
                         param => ShowAddLoginView() /* execute */,
-                        param => SelectedFolder == null || SelectedFolder.FolderType != Folder.Type.Settings /* canExecute */);
+                        param => AddLoginCanExecute() /* canExecute */);
                 }
                 return _addLoginCommand;
             }
@@ -233,6 +233,19 @@ namespace Rememberall
             m_addEditLoginVM = new AddEditLoginViewModel(SelectedFolder);
             SelectedLogin = null;
             CurrentDetailsView = m_addEditLoginVM;
+        }
+
+        private bool AddLoginCanExecute()
+        {
+            // Disable AddLogin button if:
+            //  - user is currently editing a Login
+            //  - or, user is currently looking at settings
+            if ((CurrentDetailsView != null && CurrentDetailsView == m_addEditLoginVM)
+                || (CurrentDetailsView != null && CurrentDetailsView == m_settingsVM))
+            {
+                return false;
+            }
+            return true;
         }
 
         private void ShowEditLoginView()
