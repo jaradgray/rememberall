@@ -278,9 +278,8 @@ namespace Rememberall
             AllFolders = FolderRepository.GetAllFolders();
             // Set SelectedFolder to AllItems or the given Login's Folder
             SelectedFolder = (isAllFoldersSelected) ? AllFolders[0] : AllFolders.FirstOrDefault(folder => folder.Name.Equals(login.FolderName));
-            // Set SelectedLogin to the login we just saved
-            // TODO should probably use FirstOrDefault() to avoid crashes
-            SelectedLogin = DisplayedLogins.First(loginInList => loginInList.TicksCreated == login.TicksCreated);
+            // (Try to) Set SelectedLogin to the Login we just saved
+            SelectedLogin = DisplayedLogins.FirstOrDefault(loginInList => loginInList.TicksCreated == login.TicksCreated);
         }
 
         /// <summary>
