@@ -130,6 +130,15 @@
             </Border>
         </Grid>
         
+        <!-- Branding image -->
+        <Image
+            Grid.Column="2"
+            Source="{StaticResource img_branding}"
+            Margin="16"
+            MaxWidth="400"
+            MinWidth="100"
+            Opacity="0.38"/>
+
         <!-- Item details -->
         <ContentControl
             Grid.Column="2"

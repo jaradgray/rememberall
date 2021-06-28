@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
              d:DesignWidth="450" d:DesignHeight="600"
-             Foreground="{DynamicResource foreground_mediumEmphasis}">
+             Foreground="{DynamicResource foreground_mediumEmphasis}"
+             Background="{StaticResource window_background}">
 
     <!-- Grid separating scrollable main content area and bottom buttons -->
     <Grid>

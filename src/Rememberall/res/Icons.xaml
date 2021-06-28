@@ -110,4 +110,9 @@
         x:Key="ic_app_icon"
         UriSource="pack://application:,,,/res/images/app_icon.ico"/>
 
+    <!-- branding image -->
+    <BitmapImage
+        x:Key="img_branding"
+        UriSource="pack://application:,,,/res/images/branding.png"/>
+
 </ResourceDictionary>

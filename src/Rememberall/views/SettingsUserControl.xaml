@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
              d:DesignWidth="450" d:DesignHeight="600"
-             Foreground="{DynamicResource foreground_mediumEmphasis}">
+             Foreground="{DynamicResource foreground_mediumEmphasis}"
+             Background="{StaticResource window_background}">
     
     <!-- Outer grid in case we add bottom buttons or something later -->
     <Grid>

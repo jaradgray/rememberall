@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="500"
              d:DesignWidth="400"
-             Foreground="{StaticResource foreground_mediumEmphasis}">
+             Foreground="{StaticResource foreground_mediumEmphasis}"
+             Background="{StaticResource window_background}">
     
     <Grid>
         <Grid.RowDefinitions>
