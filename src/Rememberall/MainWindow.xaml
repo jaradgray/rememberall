@@ -79,33 +79,16 @@
             </Grid>
             
             <!-- Sort control -->
-            <!-- TODO delete the StackPanel and just have 1 ComboBox -->
-            <StackPanel Grid.Row="1">
-                <ComboBox
-                    Grid.Row="1"
-                    Style="{StaticResource ComboBox}"
-                    SelectedIndex="{Binding SelectedSortModeIndex}">
-                        <ComboBoxItem Content="Alphabetical"/>
-                        <ComboBoxItem Content="Date created (oldest)"/>
-                        <ComboBoxItem Content="Date created (newest)"/>
-                        <ComboBoxItem Content="Date modified (oldest)"/>
-                        <ComboBoxItem Content="Date modified (newest)"/>
-                </ComboBox>
-
-                <!-- TODO delete this editable ComboBox -->
-                <ComboBox
-                    Grid.Row="1"
-                    Style="{StaticResource ComboBox}"
-                    IsEditable="True"
-                    Margin="0 8 0 0"
-                    SelectedIndex="{Binding SelectedSortModeIndex}">
-                        <ComboBoxItem Content="Alphabetical"/>
-                        <ComboBoxItem Content="Date created (oldest)"/>
-                        <ComboBoxItem Content="Date created (newest)"/>
-                        <ComboBoxItem Content="Date modified (oldest)"/>
-                        <ComboBoxItem Content="Date modified (newest)"/>
-                </ComboBox>
-            </StackPanel>
+            <ComboBox
+                Grid.Row="1"
+                Style="{StaticResource ComboBox}"
+                SelectedIndex="{Binding SelectedSortModeIndex}">
+                    <ComboBoxItem Content="Alphabetical"/>
+                    <ComboBoxItem Content="Date created (oldest)"/>
+                    <ComboBoxItem Content="Date created (newest)"/>
+                    <ComboBoxItem Content="Date modified (oldest)"/>
+                    <ComboBoxItem Content="Date modified (newest)"/>
+            </ComboBox>
 
             <ListView
                 Grid.Row="2"
