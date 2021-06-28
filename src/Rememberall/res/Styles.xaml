@@ -531,17 +531,15 @@
                             <!-- Titlebar stuff -->
                             <!-- app icon and window title -->
                             <StackPanel HorizontalAlignment="Left" Orientation="Horizontal">
-                                <Border Background="Red">
-                                    <!-- TODO set image source to app icon -->
-                                    <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Icon}"
-                                    Margin="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=(WindowChrome.WindowChrome).ResizeBorderThickness}"
+                                <Border>
+                                    <Image Source="{StaticResource ic_app_icon}"
+                                    Margin="8 0"
                                     Width="{Binding Source={x:Static SystemParameters.SmallIconWidth}}"
                                     WindowChrome.IsHitTestVisibleInChrome="True"/>
                                 </Border>
 
                                 <TextBlock Text="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Title}"
-                                       VerticalAlignment="Center"
-                                       Margin="8 0 0 0">
+                                       VerticalAlignment="Center">
                                     <!-- Change foreground color based on MainWindow.IsActive, via Style -->
                                     <TextBlock.Style>
                                         <Style TargetType="{x:Type TextBlock}">

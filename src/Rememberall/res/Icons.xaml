@@ -105,4 +105,9 @@
 	        s-3,5.5-8,5.5S0,8,0,8z M8,11.5c1.934,0,3.5-1.566,3.5-3.5c0-1.933-1.566-3.5-3.5-3.5C6.067,4.5,4.5,6.067,4.5,8
 	        C4.5,9.934,6.067,11.5,8,11.5z"/>
 
+    <!-- app icon -->
+    <BitmapImage
+        x:Key="ic_app_icon"
+        UriSource="pack://application:,,,/res/images/app_icon.ico"/>
+
 </ResourceDictionary>
