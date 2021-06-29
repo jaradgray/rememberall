@@ -65,7 +65,8 @@
                         Grid.Column="1"
                         Grid.Row="2"
                         FontFamily="Consolas"
-                        TextChanged="TextBox_TextChanged"/>
+                        TextChanged="TextBox_TextChanged"
+                        Text="{Binding Password, UpdateSourceTrigger=PropertyChanged}"/>
 
                     <Button
                         x:Name="Button_HidePassword"
@@ -107,7 +108,8 @@
             <Button
                 Style="{StaticResource Button.HighEmphasis}"
                 Content="{StaticResource ic_unlock}"
-                Height="48">
+                Height="48"
+                Command="{Binding AttemptUnlockCommand}">
             </Button>
         </StackPanel>
     </Grid>

@@ -17,6 +17,11 @@ namespace Rememberall
 {
     /// <summary>
     /// Interaction logic for GreetingUserControl.xaml
+    /// 
+    /// Some view-specific things are handled here in the code-behind:
+    ///     - showing/hiding obscured/unobscured master password input control
+    ///     - showing/hiding show/hide password buttons
+    ///     - syncing TextBox.Text to PasswordBox.Password, so they always show the same thing
     /// </summary>
     public partial class GreetingUserControl : UserControl
     {
