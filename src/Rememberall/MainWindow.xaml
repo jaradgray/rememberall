@@ -27,7 +27,7 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        
+
         <!-- Folders list -->
         <Grid
             Grid.Column="0"
@@ -126,6 +126,11 @@
         <ContentControl
             Grid.Column="2"
             Content="{Binding CurrentDetailsView}"/>
+
+        <!-- Greeting view -->
+        <ContentControl
+            Grid.ColumnSpan="3"
+            Content="{Binding GreetingVM}"/>
 
     </Grid>
 </Window>

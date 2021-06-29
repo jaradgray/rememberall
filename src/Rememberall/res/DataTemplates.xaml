@@ -95,5 +95,10 @@
     <DataTemplate DataType="{x:Type local:AddEditLoginViewModel}">
         <local:AddEditLoginUserControl/>
     </DataTemplate>
+    
+    <!-- Greeting view -->
+    <DataTemplate DataType="{x:Type local:GreetingViewModel}">
+        <local:GreetingUserControl/>
+    </DataTemplate>
 
 </ResourceDictionary>

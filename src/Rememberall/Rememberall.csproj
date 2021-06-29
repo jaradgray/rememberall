@@ -74,11 +74,15 @@
     <Compile Include="repositories\LoginRepository.cs" />
     <Compile Include="utils\Util.cs" />
     <Compile Include="viewmodels\AddEditLoginViewModel.cs" />
+    <Compile Include="viewmodels\GreetingViewModel.cs" />
     <Compile Include="viewmodels\LoginDetailsViewModel.cs" />
     <Compile Include="viewmodels\MainWindowViewModel.cs" />
     <Compile Include="viewmodels\SettingsViewModel.cs" />
     <Compile Include="views\AddEditLoginUserControl.xaml.cs">
       <DependentUpon>AddEditLoginUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="views\GreetingUserControl.xaml.cs">
+      <DependentUpon>GreetingUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="views\LoginDetailsUserControl.xaml.cs">
       <DependentUpon>LoginDetailsUserControl.xaml</DependentUpon>
@@ -122,6 +126,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="views\AddEditLoginUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="views\GreetingUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

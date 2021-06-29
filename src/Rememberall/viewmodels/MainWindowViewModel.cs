@@ -204,6 +204,18 @@ namespace Rememberall
             }
         }
 
+        private GreetingViewModel _greetingVM;
+        public GreetingViewModel GreetingVM
+        {
+            get { return _greetingVM; }
+            set
+            {
+                if (value == _greetingVM) return;
+                _greetingVM = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion // Properties and backing fields
 
         #region Private members
@@ -219,6 +231,9 @@ namespace Rememberall
 
         public MainWindowViewModel()
         {
+            GreetingVM = new GreetingViewModel(); // show the greeting/login screen
+            return;
+            // TODO move this to the command called by GreetingVM on correct master password entered
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders[0];
         }
