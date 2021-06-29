@@ -49,6 +49,7 @@
                         <RowDefinition Height="8"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="8"/>
                     </Grid.RowDefinitions>
 
@@ -58,20 +59,48 @@
                         FontSize="{StaticResource FontSize.Small}"
                         Text="Master Password"/>
 
+                    <!-- Unobscured passwrod input -->
                     <TextBox
+                        x:Name="TextBox"
                         Grid.Column="1"
                         Grid.Row="2"
-                        FontFamily="Consolas"/>
+                        FontFamily="Consolas"
+                        TextChanged="TextBox_TextChanged"/>
 
                     <Button
+                        x:Name="Button_HidePassword"
                         Grid.Column="2"
                         Grid.Row="2"
-                        Style="{StaticResource Button.Borderless}">
+                        Style="{StaticResource Button.Borderless}"
+                        ToolTip="Hide password"
+                        Click="Button_HidePassword_Click">
                         <ContentPresenter
                             Width="24"
                             Height="24"
                             Content="{StaticResource ic_hide_password}"/>
                     </Button>
+
+                    <!-- Obscured passwrod input -->
+                    <PasswordBox
+                        x:Name="PasswordBox"
+                        Grid.Column="1"
+                        Grid.Row="3"
+                        FontFamily="Consolas"
+                        PasswordChanged="PasswordBox_PasswordChanged"/>
+
+                    <Button
+                        x:Name="Button_ShowPassword"
+                        Grid.Column="2"
+                        Grid.Row="3"
+                        Style="{StaticResource Button.Borderless}"
+                        ToolTip="Show password"
+                        Click="Button_ShowPassword_Click">
+                        <ContentPresenter
+                            Width="24"
+                            Height="24"
+                            Content="{StaticResource ic_show_password}"/>
+                    </Button>
+
                 </Grid>
             </Border>
 
