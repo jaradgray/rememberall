@@ -20,7 +20,7 @@ namespace Rememberall
                 {
                     _attemptUnlockCommand = new RelayCommand(
                         param => AttemptUnlock(),
-                        param => !String.IsNullOrEmpty(Password));
+                        param => !String.IsNullOrEmpty(EnteredPassword));
                 }
                 return _attemptUnlockCommand;
             }
@@ -31,14 +31,26 @@ namespace Rememberall
 
         #region Properties
 
-        private string _password;
-        public string Password
+        private string _prompt;
+        public string Prompt
         {
-            get { return _password; }
+            get { return _prompt; }
             set
             {
-                if (value.Equals(_password)) return;
-                _password = value;
+                if (value.Equals(_prompt)) return;
+                _prompt = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private string _enteredPassword;
+        public string EnteredPassword
+        {
+            get { return _enteredPassword; }
+            set
+            {
+                if (value.Equals(_enteredPassword)) return;
+                _enteredPassword = value;
                 OnPropertyChanged();
             }
         }
@@ -46,11 +58,58 @@ namespace Rememberall
         #endregion // Properties
 
 
+        #region Constructor
+
+        public GreetingViewModel()
+        {
+            // Set Prompt based on if master password has been set
+            Prompt = (String.IsNullOrEmpty(Properties.Settings.Default.MasterPasswordHash)) ?
+                "Get started by setting your Master Password." :
+                "Enter your master password to unlock your Rememberall.";
+        }
+
+        #endregion // Constructor
+
+
         #region Private methods
 
         private void AttemptUnlock()
         {
-            Console.WriteLine($"Attempt unlock with password: \"{Password}\"");
+            string masterPasswordHash = Properties.Settings.Default.MasterPasswordHash;
+            string masterPasswordSalt = Properties.Settings.Default.MasterPasswordSalt;
+
+            // If master password hasn't been set...
+            if (String.IsNullOrEmpty(masterPasswordHash))
+            {
+                // Set EnteredPassword as master password
+                // get a new salt value
+                byte[] salt = CryptoHelper.NewSalt(CryptoHelper.SaltBitSize / 8);
+                string saltString = Convert.ToBase64String(salt);
+                // get hash value of EnteredPassword
+                string hash = CryptoHelper.GetHash(EnteredPassword, saltString);
+                // persist values in Settings
+                Properties.Settings.Default.MasterPasswordHash = hash;
+                Properties.Settings.Default.MasterPasswordSalt = saltString;
+                Properties.Settings.Default.Save();
+
+                // Proceed to unlock app
+                ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
+                return;
+            }
+
+            // If execution reaches here, master password has already been set.
+            // Check if EnteredPassword's hash matches MasterPasswordHash
+            if (CryptoHelper.VerifyHash(EnteredPassword, masterPasswordSalt, masterPasswordHash))
+            {
+                // Unlock app
+                ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
+            }
+            else
+            {
+                // EnteredPassword's hash doesn't match MasterPasswordHash
+                // Update Prompt
+                Prompt = "Incorrect Master Password.";
+            }
         }
 
         #endregion // Private methods

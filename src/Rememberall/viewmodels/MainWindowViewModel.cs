@@ -232,13 +232,24 @@ namespace Rememberall
         public MainWindowViewModel()
         {
             GreetingVM = new GreetingViewModel(); // show the greeting/login screen
-            return;
-            // TODO move this to the command called by GreetingVM on correct master password entered
+        }
+
+        #endregion // Constructor
+
+
+        #region Public methods
+
+        public void OnMasterPasswordAccepted(string enteredPassword)
+        {
+            // TODO Set master password in memory
+
+            // Initialize view
+            GreetingVM = null;
             AllFolders = FolderRepository.GetAllFolders();
             SelectedFolder = AllFolders[0];
         }
 
-        #endregion // Constructor
+        #endregion // Public methods
 
 
         #region Private methods
