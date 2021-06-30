@@ -81,6 +81,8 @@ namespace Rememberall
             // If master password hasn't been set...
             if (String.IsNullOrEmpty(masterPasswordHash))
             {
+                // TODO verify EnteredPassword is compatible with our Crypto methods (minimum length)
+
                 // Set EnteredPassword as master password
                 // get a new salt value
                 byte[] salt = CryptoHelper.NewSalt(CryptoHelper.SaltBitSize / 8);
