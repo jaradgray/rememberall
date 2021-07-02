@@ -50,6 +50,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="8"/>
                     </Grid.RowDefinitions>
 
@@ -101,6 +102,15 @@
                             Height="24"
                             Content="{StaticResource ic_show_password}"/>
                     </Button>
+                    
+                    <!-- Error message : minimum length -->
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="4"
+                        Foreground="{StaticResource foreground_red}"
+                        FontSize="{StaticResource FontSize.Small}"
+                        Visibility="{Binding ErrorVisibility_PasswordLength}"
+                        Text="Password must be at least 12 characters"/>
 
                 </Grid>
             </Border>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 
 namespace Rememberall
@@ -55,6 +56,18 @@ namespace Rememberall
             }
         }
 
+        private Visibility _errorVisibility_PasswordLength;
+        public Visibility ErrorVisibility_PasswordLength
+        {
+            get { return _errorVisibility_PasswordLength; }
+            set
+            {
+                if (value == _errorVisibility_PasswordLength) return;
+                _errorVisibility_PasswordLength = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion // Properties
 
 
@@ -63,9 +76,12 @@ namespace Rememberall
         public GreetingViewModel()
         {
             // Set Prompt based on if master password has been set
-            Prompt = (String.IsNullOrEmpty(Properties.Settings.Default.MasterPasswordHash)) ?
+            Prompt = (String.IsNullOrWhiteSpace(Properties.Settings.Default.MasterPasswordHash)) ?
                 "Get started by setting your Master Password." :
                 "Enter your master password to unlock your Rememberall.";
+
+            // Hide error
+            ErrorVisibility_PasswordLength = Visibility.Collapsed;
         }
 
         #endregion // Constructor
@@ -79,9 +95,16 @@ namespace Rememberall
             string masterPasswordSalt = Properties.Settings.Default.MasterPasswordSalt;
 
             // If master password hasn't been set...
-            if (String.IsNullOrEmpty(masterPasswordHash))
+            if (String.IsNullOrWhiteSpace(masterPasswordHash))
             {
-                // TODO verify EnteredPassword is compatible with our Crypto methods (minimum length)
+                // Verify EnteredPassword is compatible with our Crypto methods (minimum length)
+                if (EnteredPassword.Length < 12)
+                {
+                    ErrorVisibility_PasswordLength = Visibility.Visible;
+                    return;
+                }
+
+                ErrorVisibility_PasswordLength = Visibility.Collapsed;
 
                 // Set EnteredPassword as master password
                 MasterPasswordHelper.SetMasterPassword(EnteredPassword);
@@ -94,6 +117,9 @@ namespace Rememberall
             }
 
             // If execution reaches here, master password has already been set.
+
+            ErrorVisibility_PasswordLength = Visibility.Collapsed;
+
             // Check if EnteredPassword's hash matches MasterPasswordHash
             if (CryptoHelper.VerifyHash(EnteredPassword, masterPasswordSalt, masterPasswordHash))
             {
