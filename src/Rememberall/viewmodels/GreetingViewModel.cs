@@ -68,6 +68,18 @@ namespace Rememberall
             }
         }
 
+        private Visibility _errorVisibility_IncorrectPassword;
+        public Visibility ErrorVisibility_IncorrectPassword
+        {
+            get { return _errorVisibility_IncorrectPassword; }
+            set
+            {
+                if (value == _errorVisibility_IncorrectPassword) return;
+                _errorVisibility_IncorrectPassword = value;
+                OnPropertyChanged();
+            }
+        }
+
         #endregion // Properties
 
 
@@ -80,8 +92,9 @@ namespace Rememberall
                 "Get started by setting your Master Password." :
                 "Enter your master password to unlock your Rememberall.";
 
-            // Hide error
+            // Hide errors
             ErrorVisibility_PasswordLength = Visibility.Collapsed;
+            ErrorVisibility_IncorrectPassword = Visibility.Collapsed;
         }
 
         #endregion // Constructor
@@ -91,6 +104,11 @@ namespace Rememberall
 
         private void AttemptUnlock()
         {
+            // Initially hide all errors
+            ErrorVisibility_PasswordLength = Visibility.Collapsed;
+            ErrorVisibility_IncorrectPassword = Visibility.Collapsed;
+
+            // Get persisted settings
             string masterPasswordHash = Properties.Settings.Default.MasterPasswordHash;
             string masterPasswordSalt = Properties.Settings.Default.MasterPasswordSalt;
 
@@ -104,8 +122,6 @@ namespace Rememberall
                     return;
                 }
 
-                ErrorVisibility_PasswordLength = Visibility.Collapsed;
-
                 // Set EnteredPassword as master password
                 MasterPasswordHelper.SetMasterPassword(EnteredPassword);
 
@@ -117,9 +133,6 @@ namespace Rememberall
             }
 
             // If execution reaches here, master password has already been set.
-
-            ErrorVisibility_PasswordLength = Visibility.Collapsed;
-
             // Check if EnteredPassword's hash matches MasterPasswordHash
             if (CryptoHelper.VerifyHash(EnteredPassword, masterPasswordSalt, masterPasswordHash))
             {
@@ -128,9 +141,8 @@ namespace Rememberall
             }
             else
             {
-                // EnteredPassword's hash doesn't match MasterPasswordHash
-                // Update Prompt
-                Prompt = "Incorrect Master Password.";
+                // EnteredPassword's hash doesn't match MasterPasswordHash; show error
+                ErrorVisibility_IncorrectPassword = Visibility.Visible;
             }
         }
 

@@ -51,6 +51,7 @@
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
                         <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
                         <RowDefinition Height="8"/>
                     </Grid.RowDefinitions>
 
@@ -111,6 +112,15 @@
                         FontSize="{StaticResource FontSize.Small}"
                         Visibility="{Binding ErrorVisibility_PasswordLength}"
                         Text="Password must be at least 12 characters"/>
+
+                    <!-- Error message : incorrect password -->
+                    <TextBlock
+                        Grid.Column="1"
+                        Grid.Row="5"
+                        Foreground="{StaticResource foreground_red}"
+                        FontSize="{StaticResource FontSize.Small}"
+                        Visibility="{Binding ErrorVisibility_IncorrectPassword}"
+                        Text="Incorrect Master Password"/>
 
                 </Grid>
             </Border>
