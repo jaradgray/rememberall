@@ -73,6 +73,7 @@
     <Compile Include="repositories\FolderRepository.cs" />
     <Compile Include="repositories\LoginRepository.cs" />
     <Compile Include="utils\CryptoHelper.cs" />
+    <Compile Include="utils\MasterPasswordHelper.cs" />
     <Compile Include="utils\Util.cs" />
     <Compile Include="viewmodels\AddEditLoginViewModel.cs" />
     <Compile Include="viewmodels\GreetingViewModel.cs" />
