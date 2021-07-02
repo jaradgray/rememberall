@@ -84,15 +84,9 @@ namespace Rememberall
                 // TODO verify EnteredPassword is compatible with our Crypto methods (minimum length)
 
                 // Set EnteredPassword as master password
-                // get a new salt value
-                byte[] salt = CryptoHelper.NewSalt(CryptoHelper.SaltBitSize / 8);
-                string saltString = Convert.ToBase64String(salt);
-                // get hash value of EnteredPassword
-                string hash = CryptoHelper.GetHash(EnteredPassword, saltString);
-                // persist values in Settings
-                Properties.Settings.Default.MasterPasswordHash = hash;
-                Properties.Settings.Default.MasterPasswordSalt = saltString;
-                Properties.Settings.Default.Save();
+                MasterPasswordHelper.SetMasterPassword(EnteredPassword);
+
+                // TODO overwrite bundled db file with its encrypted bytes
 
                 // Proceed to unlock app
                 ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
