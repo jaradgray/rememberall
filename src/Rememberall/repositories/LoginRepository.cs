@@ -47,7 +47,7 @@ namespace Rememberall
                 connection.Execute(sql, login);
             }
             // Database updated, back up the file
-            Util.BackupDatabaseFile();
+            DatabaseHelper.BackupEncryptedDatabase();
         }
 
         public static void SaveLogin(Login login)
@@ -55,7 +55,7 @@ namespace Rememberall
             if (LoginExists(login)) UpdateLogin(login);
             else InsertLogin(login);
             // Database updated, back up the file
-            Util.BackupDatabaseFile();
+            DatabaseHelper.BackupEncryptedDatabase();
         }
 
         /// <summary>

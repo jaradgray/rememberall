@@ -75,7 +75,6 @@
     <Compile Include="utils\CryptoHelper.cs" />
     <Compile Include="utils\DatabaseHelper.cs" />
     <Compile Include="utils\MasterPasswordHelper.cs" />
-    <Compile Include="utils\Util.cs" />
     <Compile Include="viewmodels\AddEditLoginViewModel.cs" />
     <Compile Include="viewmodels\GreetingViewModel.cs" />
     <Compile Include="viewmodels\LoginDetailsViewModel.cs" />
