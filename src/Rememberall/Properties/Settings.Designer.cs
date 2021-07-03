@@ -34,5 +34,29 @@ namespace Rememberall.Properties {
                 this["IsPasswordObscured"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MasterPasswordHash {
+            get {
+                return ((string)(this["MasterPasswordHash"]));
+            }
+            set {
+                this["MasterPasswordHash"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MasterPasswordSalt {
+            get {
+                return ((string)(this["MasterPasswordSalt"]));
+            }
+            set {
+                this["MasterPasswordSalt"] = value;
+            }
+        }
     }
 }

@@ -96,6 +96,140 @@
                             </Button>
                         </Grid>
                     </Border>
+
+                    <!-- Change Master Password section -->
+                    <TextBlock
+                        Margin="0 16 0 8"
+                        FontSize="{StaticResource FontSize.Normal}"
+                        Text="Change Master Password"/>
+
+                    <!-- "card" -->
+                    <Border
+                        Background="{StaticResource surface_elevation_1}">
+                        
+                        <!-- Stack multiple sections in the card -->
+                        <StackPanel>
+
+                            <!-- Current master password -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    FontSize="{StaticResource FontSize.Small}"
+                                    Text="Current Master Password"/>
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    Grid.Row="2"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding EnteredMasterPassword, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+                            
+                            <!-- Error: incorrect master password -->
+                            <TextBlock
+                                Margin="8 0 0 0"
+                                Foreground="{StaticResource foreground_red}"
+                                FontSize="{StaticResource FontSize.Small}"
+                                Visibility="{Binding ErrorVisibility_IncorrectMasterPassword}"
+                                Text="Incorrect master password"/>
+
+                            <!-- New master password -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    FontSize="{StaticResource FontSize.Small}"
+                                    Text="New Master Password"/>
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    Grid.Row="2"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding EnteredNewMasterPassword, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <!-- Confirm new master password -->
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="8"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="auto"/>
+                                    <ColumnDefinition Width="8"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="8"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="auto"/>
+                                    <RowDefinition Height="8"/>
+                                </Grid.RowDefinitions>
+
+                                <TextBlock
+                                    Grid.Column="1"
+                                    Grid.Row="1"
+                                    FontSize="{StaticResource FontSize.Small}"
+                                    Text="Confirm new Master Password"/>
+
+                                <TextBox
+                                    Grid.Column="1"
+                                    Grid.Row="2"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding EnteredConfirmedNewMasterPassword, UpdateSourceTrigger=PropertyChanged}"/>
+                            </Grid>
+
+                            <!-- Error: new password too short -->
+                            <TextBlock
+                                Margin="8 0 0 0"
+                                Foreground="{StaticResource foreground_red}"
+                                FontSize="{StaticResource FontSize.Small}"
+                                Visibility="{Binding ErrorVisibility_MasterPasswordLength}"
+                                Text="Password must be at least 12 characters"/>
+
+                            <!-- Error: new passwords don't match -->
+                            <TextBlock
+                                Margin="8 0 0 0"
+                                Foreground="{StaticResource foreground_red}"
+                                FontSize="{StaticResource FontSize.Small}"
+                                Visibility="{Binding ErrorVisibility_MasterPasswordMatch}"
+                                Text="New passwords must match"/>
+
+                            <!-- Change master password button -->
+                            <Button
+                                Style="{StaticResource Button.HighEmphasis}"
+                                Margin="8"
+                                HorizontalAlignment="Right"
+                                Command="{Binding AttemptChangePasswordCommand}"
+                                Content="Change Master Password"/>
+                        </StackPanel>
+                    </Border>
                 </StackPanel>
             </Grid>
         </ScrollViewer>
