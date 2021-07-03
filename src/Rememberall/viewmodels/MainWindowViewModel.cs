@@ -243,6 +243,9 @@ namespace Rememberall
         {
             // TODO Set master password in memory
 
+            // Create temporary database we'll connect to during this app session
+            DatabaseHelper.CreateTempDatabase(enteredPassword);
+
             // Initialize view
             GreetingVM = null;
             AllFolders = FolderRepository.GetAllFolders();
