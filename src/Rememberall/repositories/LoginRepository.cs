@@ -46,7 +46,8 @@ namespace Rememberall
                 string sql = "DELETE FROM LoginTable WHERE TicksCreated = @TicksCreated";
                 connection.Execute(sql, login);
             }
-            // Database updated, back up the file
+            // Database updated, persist changes to encrypted database and make a backup
+            DatabaseHelper.WriteEncryptedDatabase();
             DatabaseHelper.BackupEncryptedDatabase();
         }
 
@@ -54,7 +55,8 @@ namespace Rememberall
         {
             if (LoginExists(login)) UpdateLogin(login);
             else InsertLogin(login);
-            // Database updated, back up the file
+            // Database updated, persist changes to encrypted database and make a backup
+            DatabaseHelper.WriteEncryptedDatabase();
             DatabaseHelper.BackupEncryptedDatabase();
         }
 
