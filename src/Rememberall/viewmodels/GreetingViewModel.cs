@@ -126,6 +126,7 @@ namespace Rememberall
                 MasterPasswordHelper.SetMasterPassword(EnteredPassword);
 
                 // TODO overwrite bundled db file with its encrypted bytes
+                DatabaseHelper.WriteEncryptedDatabase(EnteredPassword);
 
                 // Proceed to unlock app
                 ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
