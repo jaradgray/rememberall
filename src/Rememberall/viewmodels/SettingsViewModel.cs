@@ -189,13 +189,12 @@ namespace Rememberall
             EnteredNewMasterPassword = "";
             EnteredConfirmedNewMasterPassword = "";
 
-            // Change master password
+            // Change persisted master password settings
             MasterPasswordHelper.SetMasterPassword(newPassword);
 
             // Re-encrypt database using new master password
-            DatabaseHelper.WriteEncryptedDatabase(newPassword);
-
-            // TODO tell MainWindowVM master password has changed
+            DatabaseHelper.Password = newPassword;
+            DatabaseHelper.WriteEncryptedDatabase();
         }
 
         /// <summary>

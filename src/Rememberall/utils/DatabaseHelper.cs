@@ -17,33 +17,44 @@ namespace Rememberall
         public static readonly string ConnectionString = $@"Data Source={TempDbPath};Version=3;"; // connection string to the database the app connects to
 
         /// <summary>
-        /// Reads the unencrypted database file's data, encrypts it with the given
-        /// password, and overwrites the bundled database file with the encrypted data.
+        /// The password this class uses to encrypt and decrypt database files.
+        /// Must be set before invoking any method that uses it.
+        /// </summary>
+        public static string Password { private get; set; }
+
+        /// <summary>
+        /// Reads the unencrypted database file's data, encrypts it with the Password
+        /// member, and overwrites the bundled database file with the encrypted data.
         /// </summary>
         /// <param name="password"></param>
-        public static void WriteEncryptedDatabase(string password)
+        public static void WriteEncryptedDatabase()
         {
+            if (String.IsNullOrEmpty(Password))
+                throw new InvalidOperationException("Member 'Password' is not set");
+            
             // Get unencrypted db's bytes.
             //  Read temp db file if it exists, otherwise read bundled db file
             string path = (File.Exists(TempDbPath)) ? TempDbPath : EncryptedDbPath;
             byte[] unencrypted = File.ReadAllBytes(path);
             // Encrypt them
-            byte[] encrypted = CryptoHelper.SimpleEncryptWithPassword(unencrypted, password);
+            byte[] encrypted = CryptoHelper.SimpleEncryptWithPassword(unencrypted, Password);
             // Write them to bundled db file
             File.WriteAllBytes(EncryptedDbPath, encrypted);
         }
 
         /// <summary>
-        /// Reads the encrypted database file's data, decrypts it with the given
-        /// password, and writes the decrypted data to a file on-disk.
+        /// Reads the encrypted database file's data, decrypts it with the Password
+        /// member, and writes the decrypted data to a file on-disk.
         /// </summary>
-        /// <param name="password"></param>
-        public static void CreateTempDatabase(string password)
+        public static void CreateTempDatabase()
         {
+            if (String.IsNullOrEmpty(Password))
+                throw new InvalidOperationException("Member 'Password' is not set");
+
             // Get encrypted db's bytes
             byte[] encrypted = File.ReadAllBytes(EncryptedDbPath);
             // Decrypt them
-            byte[] decrypted = CryptoHelper.SimpleDecryptWithPassword(encrypted, password);
+            byte[] decrypted = CryptoHelper.SimpleDecryptWithPassword(encrypted, Password);
             // Write them to temporary db file
             File.WriteAllBytes(TempDbPath, decrypted);
         }

@@ -125,8 +125,9 @@ namespace Rememberall
                 // Set EnteredPassword as master password
                 MasterPasswordHelper.SetMasterPassword(EnteredPassword);
 
-                // TODO overwrite bundled db file with its encrypted bytes
-                DatabaseHelper.WriteEncryptedDatabase(EnteredPassword);
+                // Encrypt bundled database file
+                DatabaseHelper.Password = EnteredPassword;
+                DatabaseHelper.WriteEncryptedDatabase();
 
                 // Proceed to unlock app
                 ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
@@ -137,6 +138,8 @@ namespace Rememberall
             // Check if EnteredPassword's hash matches MasterPasswordHash
             if (CryptoHelper.VerifyHash(EnteredPassword, masterPasswordSalt, masterPasswordHash))
             {
+                // Set DatabaseHelper's Password
+                DatabaseHelper.Password = EnteredPassword;
                 // Unlock app
                 ((MainWindowViewModel)App.Current.MainWindow.DataContext).OnMasterPasswordAccepted(EnteredPassword);
             }
