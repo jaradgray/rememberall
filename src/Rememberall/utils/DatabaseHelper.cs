@@ -13,7 +13,7 @@ namespace Rememberall
     /// </summary>
     public static class DatabaseHelper
     {
-        public static readonly string EncryptedDbPath = @".\data\dummy.db"; // path to db that is bundled with the app and overwritten with encrypted data
+        public static readonly string EncryptedDbPath = @".\data\data.db"; // path to db that is bundled with the app and overwritten with encrypted data
         public static readonly string BackupEncryptedDbPath = @".\data\data_BACKUP.db"; // path to the copy of the encrypted database file
         public static readonly string TempDbPath = @".\data\~temp"; // path to unencrypted temporary db that the app actually connects to
         public static readonly string ConnectionString = $@"Data Source={TempDbPath};Version=3;"; // connection string to the database the app connects to
