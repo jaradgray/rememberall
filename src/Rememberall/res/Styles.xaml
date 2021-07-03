@@ -128,15 +128,7 @@
         <Setter Property="Background" Value="{StaticResource Button.HighEmphasis.Static.Background}"/>
     </Style>
     
-    
-    <!-- TextBlock -->
-    <Style
-        TargetType="{x:Type TextBlock}"
-        BasedOn="{StaticResource {x:Type TextBlock}}">
-        <Setter Property="Foreground" Value="{StaticResource foreground_mediumEmphasis}"/>
-        <Setter Property="FontSize" Value="{StaticResource FontSize.Normal}"/>
-    </Style>
-    
+
     <!-- TextBox -->
     <Style
         TargetType="{x:Type TextBox}"

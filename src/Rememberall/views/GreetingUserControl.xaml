@@ -6,7 +6,8 @@
              xmlns:local="clr-namespace:Rememberall"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="{DynamicResource window_background}">
+             Background="{DynamicResource window_background}"
+             Foreground="{DynamicResource foreground_mediumEmphasis}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="8"/>
@@ -33,6 +34,7 @@
             <TextBlock
                 TextAlignment="Center"
                 TextWrapping="Wrap"
+                FontSize="{StaticResource FontSize.Normal}"
                 Text="{Binding Prompt}"/>
 
             <Border
