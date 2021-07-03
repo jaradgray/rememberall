@@ -12,8 +12,6 @@ namespace Rememberall
 {
     public static class LoginRepository
     {
-        private const string CONNECTION_STRING = @"Data Source=.\data\dummy.db;Version=3;"; // the connection string for the database we'll connect to
-
         #region Public methods
 
         /// <summary>
@@ -28,7 +26,7 @@ namespace Rememberall
             if (folder == null) return null;
             if (folder.FolderType == Folder.Type.AllItems) return GetAllLogins();
 
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string query = "SELECT * FROM LoginTable WHERE FolderName = '" + folder.Name + "'";
                 var output = connection.Query<Login>(query, new DynamicParameters());
@@ -43,21 +41,23 @@ namespace Rememberall
         /// <param name="login"></param>
         public static void DeleteLogin(Login login)
         {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string sql = "DELETE FROM LoginTable WHERE TicksCreated = @TicksCreated";
                 connection.Execute(sql, login);
             }
-            // Database updated, back up the file
-            Util.BackupDatabaseFile();
+            // Database updated, persist changes to encrypted database and make a backup
+            DatabaseHelper.WriteEncryptedDatabase();
+            DatabaseHelper.BackupEncryptedDatabase();
         }
 
         public static void SaveLogin(Login login)
         {
             if (LoginExists(login)) UpdateLogin(login);
             else InsertLogin(login);
-            // Database updated, back up the file
-            Util.BackupDatabaseFile();
+            // Database updated, persist changes to encrypted database and make a backup
+            DatabaseHelper.WriteEncryptedDatabase();
+            DatabaseHelper.BackupEncryptedDatabase();
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Rememberall
         /// <returns></returns>
         public static bool LoginExists(Login login)
         {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string query = "SELECT * FROM LoginTable WHERE TicksCreated = " + login.TicksCreated;
                 var output = connection.Query<Login>(query, new DynamicParameters());
@@ -87,7 +87,7 @@ namespace Rememberall
         /// <returns></returns>
         private static ObservableCollection<Login> GetAllLogins()
         {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string query = "SELECT * FROM LoginTable";
                 var output = connection.Query<Login>(query, new DynamicParameters());
@@ -101,7 +101,7 @@ namespace Rememberall
         /// <param name="login"></param>
         private static void InsertLogin(Login login)
         {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string columnList = "(TicksCreated, TicksModified, FolderName, FaviconPath, Title, Website, Email, Username, Password, Note, IsFavorite)";
                 string valuesList = "(@TicksCreated, @TicksModified, @FolderName, @FaviconPath, @Title, @Website, @Email, @Username, @Password, @Note, @IsFavorite)";
@@ -116,7 +116,7 @@ namespace Rememberall
         /// <param name="login"></param>
         private static void UpdateLogin(Login login)
         {
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string sql = "UPDATE LoginTable SET "
                     + "TicksModified = @TicksModified"

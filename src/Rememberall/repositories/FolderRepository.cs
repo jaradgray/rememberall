@@ -14,8 +14,6 @@ namespace Rememberall
     /// </summary>
     public static class FolderRepository
     {
-        private const string CONNECTION_STRING = @"Data Source=.\data\dummy.db;Version=3;";
-
         /// <summary>
         /// Returns a List containing all Folders in the database, 
         /// including special Folders (AllFolders, Settings)
@@ -29,7 +27,7 @@ namespace Rememberall
             result.Add(new Folder("Settings", Folder.Type.Settings));
 
             // Populate result with a Folder object for each unique FolderName in LoginTable
-            using (IDbConnection connection = new SQLiteConnection(CONNECTION_STRING))
+            using (IDbConnection connection = new SQLiteConnection(DatabaseHelper.ConnectionString))
             {
                 string query = "SELECT DISTINCT FolderName FROM LoginTable ORDER BY FolderName ASC";
                 var folderNames = connection.Query<string>(query, new DynamicParameters());

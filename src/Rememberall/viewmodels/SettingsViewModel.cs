@@ -181,16 +181,20 @@ namespace Rememberall
                 return;
             }
 
+            string newPassword = EnteredNewMasterPassword; // grab the new master password before we clear it
+
             // Update view
             ShowHideChangeMasterPasswordErrors(false, false, false);
             EnteredMasterPassword = "";
             EnteredNewMasterPassword = "";
             EnteredConfirmedNewMasterPassword = "";
-            // Change master password
-            MasterPasswordHelper.SetMasterPassword(EnteredNewMasterPassword);
 
-            // TODO re-encrypt database with new master password
-            // TODO tell MainWindowVM master password has changed
+            // Change persisted master password settings
+            MasterPasswordHelper.SetMasterPassword(newPassword);
+
+            // Re-encrypt database using new master password
+            DatabaseHelper.Password = newPassword;
+            DatabaseHelper.WriteEncryptedDatabase();
         }
 
         /// <summary>

@@ -73,8 +73,8 @@
     <Compile Include="repositories\FolderRepository.cs" />
     <Compile Include="repositories\LoginRepository.cs" />
     <Compile Include="utils\CryptoHelper.cs" />
+    <Compile Include="utils\DatabaseHelper.cs" />
     <Compile Include="utils\MasterPasswordHelper.cs" />
-    <Compile Include="utils\Util.cs" />
     <Compile Include="viewmodels\AddEditLoginViewModel.cs" />
     <Compile Include="viewmodels\GreetingViewModel.cs" />
     <Compile Include="viewmodels\LoginDetailsViewModel.cs" />
@@ -170,7 +170,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Content Include="data\dummy.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
