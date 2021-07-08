@@ -25,19 +25,22 @@
             Grid.Column="1"
             Grid.Row="1"
             Orientation="Vertical"
-            MaxWidth="500"
+            MaxWidth="400"
             VerticalAlignment="Center">
 
             <Image
+                Margin="0 0 0 32"
                 Source="{StaticResource img_branding}"/>
 
             <TextBlock
+                Margin="0 0 0 16"
                 TextAlignment="Center"
                 TextWrapping="Wrap"
                 FontSize="{StaticResource FontSize.Normal}"
                 Text="{Binding Prompt}"/>
 
             <Border
+                Margin="0 0 0 16"
                 Background="{StaticResource surface_elevation_4dp}">
                 <Grid>
                     <Grid.ColumnDefinitions>
@@ -129,9 +132,15 @@
 
             <Button
                 Style="{StaticResource Button.HighEmphasis}"
-                Content="{StaticResource ic_unlock}"
-                Height="48"
                 Command="{Binding AttemptUnlockCommand}">
+                <StackPanel
+                    Orientation="Horizontal">
+                    <ContentPresenter
+                        Margin="0 0 8 0"
+                        Content="{StaticResource ic_unlock}"/>
+                    <TextBlock
+                        Text="Unlock"/>
+                </StackPanel>
             </Button>
         </StackPanel>
     </Grid>
